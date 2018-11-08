@@ -167,7 +167,7 @@ void verify_network(char *cfgfile, char *weightfile, char *ncnn_param,
       continue;
     }
 
-    std::string blob_name = get_layer_no_spilt_output_blob_name(l, i);
+    std::string blob_name = get_layer_no_split_output_blob_name(l, i);
     ncnn::Mat ncnn_out;
     ex.extract(blob_name.c_str(), ncnn_out);
 

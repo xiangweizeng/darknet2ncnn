@@ -83,7 +83,7 @@ class ObjectsManager
     inline int get_prob_index(float prob);
 
   protected:
-    std::vector<PObjectBoxs> objext_boxs_table;
+    std::vector<PObjectBoxs> object_boxs_table;
     size_t prob_steps;
     size_t step;
 };

@@ -8,7 +8,7 @@
 #include "darknet_tools.h"
 #include <vector>
 
-std::vector<spilt_data> spilt_info;
+std::vector<split_data> split_info;
 
 int get_ncnn_layer_count(layer l)
 {
@@ -225,7 +225,7 @@ void parse_convolutional(network net, int layer_index, layer conv, FILE *pp,
   std::string input_data = "data";
   if (layer_index > 0)
   {
-    input_data = get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+    input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
 
   if (conv.groups == 1)
@@ -287,7 +287,7 @@ void parse_deconvolutional(network net, int layer_index, layer deconv, FILE *pp,
   std::string input_data = "data";
   if (layer_index > 0)
   {
-    input_data = get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+    input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
 
   if (deconv.groups == 1)
@@ -351,7 +351,7 @@ void parse_local(network net, int layer_index, layer local, FILE *pp,
   std::string input_data = "data";
   if (layer_index > 0)
   {
-    input_data = get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+    input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
 
   /**
@@ -384,9 +384,9 @@ void parse_active(network net, int layer_index, layer active, FILE *pp,
     return;
 
   std::string input_format = get_layer_output_blob_format(net.layers[layer_index - 1]);
-  if (spilt_info[layer_index - 1].spilts.size() > 1)
+  if (split_info[layer_index - 1].splits.size() > 1)
   {
-    input_format += spilt_info[layer_index - 1].get_spilt_info(layer_index);
+    input_format += split_info[layer_index - 1].get_split_info(layer_index);
   }
 
   get_ncnn_layer_type_from_activation(active.activation, "activation_%d",
@@ -399,7 +399,7 @@ void parse_logxent(network net, int layer_index, layer legxent, FILE *pp,
 {
   if (layer_index <= 0)
     return;
-  std::string input_data = get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+  std::string input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
 
   fprintf(pp, "%-16s logxent_%d 1 1 %s logxent_%d\n", "Sigmoid", layer_index,
           input_data.c_str(), layer_index);
@@ -411,7 +411,7 @@ void parse_l2norm(network net, int layer_index, layer l2norm, FILE *pp,
   std::string input_data = "data";
   if (layer_index > 0)
   {
-    input_data = get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+    input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
   fprintf(pp, "%-16s l2norm%d 1 1 %s l2norm%d 0=0 1=1 2=0.0 3=1 4=1\n",
           "Normalize", layer_index, input_data.c_str(), layer_index);
@@ -435,7 +435,7 @@ void parse_connected(network net, int layer_index, layer connected, FILE *pp,
   std::string input_data = "data";
   if (layer_index > 0)
   {
-    input_data = get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+    input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
 
   /**
@@ -485,7 +485,7 @@ void parse_crop(network net, int layer_index, layer crop, FILE *pp, FILE *bp)
   std::string input_data = "data";
   if (layer_index > 0)
   {
-    input_data = get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+    input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
 
   fprintf(pp, "%-16s crop_%d 1 1 %s crop_%d", "Crop", layer_index,
@@ -504,7 +504,7 @@ void parse_region(network net, int layer_index, layer region, FILE *pp,
   std::string input_data = "data";
   if (layer_index > 0)
   {
-    input_data = get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+    input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
 
   fprintf(pp, "%-16s region_%d 1 1 %s region_%d", "YoloDetectionOutput",
@@ -537,7 +537,7 @@ void parse_yolo(network net, std::vector<int> yolos, FILE *pp, FILE *bp)
     last_index = yolos[i];
     layer yolo = net.layers[last_index];
     classes = yolo.classes;
-    input_data += " " + get_layer_output_blob_name(spilt_info, last_index - 1, last_index);
+    input_data += " " + get_layer_output_blob_name(split_info, last_index - 1, last_index);
 
     for (int n = 0; n < yolo.n; n++)
     {
@@ -565,7 +565,7 @@ void parse_detection(network net, int layer_index, layer detection, FILE *pp,
   std::string input_data = "data";
   if (layer_index > 0)
   {
-    input_data = get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+    input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
 
   fprintf(pp, "%-16s detection_%d 1 1 %s detection_%d", "Yolov1Detection",
@@ -580,7 +580,7 @@ void parse_softmax(network net, int layer_index, layer softmax, FILE *pp,
   std::string input_data = "data";
   if (layer_index > 0)
   {
-    input_data = get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+    input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
 
   fprintf(pp, "%-16s softmax_%d 1 1 %s softmax_%d 0=0\n", "Softmax",
@@ -593,7 +593,7 @@ void parse_normalization(network net, int layer_index, layer norm, FILE *pp,
   std::string input_data = "data";
   if (layer_index > 0)
   {
-    input_data = get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+    input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
 
   fprintf(pp, "%-16s normalization_%d 1 1 %s normalization_%d", "LRN",
@@ -609,9 +609,9 @@ void parse_batchnorm(network net, int layer_index, layer batchnorm, FILE *pp,
     return;
 
   std::string input_format = get_layer_output_blob_format(net.layers[layer_index - 1]);
-  if (spilt_info[layer_index - 1].spilts.size() > 1)
+  if (split_info[layer_index - 1].splits.size() > 1)
   {
-    input_format += spilt_info[layer_index - 1].get_spilt_info(layer_index);
+    input_format += split_info[layer_index - 1].get_split_info(layer_index);
   }
 
   get_ncnn_batch_norm_form_layer(batchnorm, "batch_norm_%d",
@@ -625,7 +625,7 @@ void parse_maxpool(network net, int layer_index, layer maxpool, FILE *pp,
   std::string input_data = "data";
   if (layer_index > 0)
   {
-    input_data = get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+    input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
 
   fprintf(pp, "%-16s maxpool_%d 1 1 %s maxpool_%d", "Pooling", layer_index,
@@ -644,7 +644,7 @@ void parse_reorg(network net, int layer_index, layer reorg, FILE *pp,
   std::string input_data = "data";
   if (layer_index > 0)
   {
-    input_data = get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+    input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
 
   fprintf(pp, "%-16s reorg_%d 1 1 %s reorg_%d 0=%d\n", "Reorg", layer_index,
@@ -657,7 +657,7 @@ void parse_avgpool(network net, int layer_index, layer avgpool, FILE *pp,
   std::string input_data = "data";
   if (layer_index > 0)
   {
-    input_data = get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+    input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
 
   fprintf(pp, "%-16s gloabl_avg_pool_%d 1 1 %s gloabl_avg_pool_%d 0=1 4=1\n",
@@ -672,7 +672,7 @@ void parse_route(network net, int layer_index, layer route, FILE *pp,
   for (; i < route.n; i++)
   {
     int index = route.input_layers[i];
-    input_data += " " + get_layer_output_blob_name(spilt_info, index, layer_index);
+    input_data += " " + get_layer_output_blob_name(split_info, index, layer_index);
   }
 
   fprintf(pp, "%-16s route_%d %d 1 %s route_%d 0=0\n", "Concat", layer_index,
@@ -685,7 +685,7 @@ void parse_upsample(network net, int layer_index, layer upsample, FILE *pp,
   std::string input_data = "data";
   if (layer_index > 0)
   {
-    input_data = get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+    input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
   fprintf(pp, "%-16s upsample_%d 1 1 %s upsample_%d", "Interp", layer_index,
           input_data.c_str(), layer_index);
@@ -698,8 +698,8 @@ void parse_shortcut(network net, int layer_index, layer shortcut, FILE *pp,
   std::string input_data = "";
   if (layer_index > 0)
   {
-    input_data = get_layer_output_blob_name(spilt_info, shortcut.index, layer_index);
-    input_data += " " + get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+    input_data = get_layer_output_blob_name(split_info, shortcut.index, layer_index);
+    input_data += " " + get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
 
   // commit, test, some network not wosk
@@ -732,7 +732,7 @@ void parse_dropout(network net, int layer_index, layer dropout, FILE *pp,
   std::string input_data = "data";
   if (layer_index > 0)
   {
-    input_data = get_layer_output_blob_name(spilt_info, layer_index - 1, layer_index);
+    input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
   fprintf(pp, "%-16s dropout_%d 1 1 %s dropout_%d\n", "Dropout", layer_index,
           input_data.c_str(), layer_index);
@@ -749,8 +749,8 @@ void parse_network(char *cfgfile, char *weightfile, char *ncnn_prototxt,
   FILE *pp = fopen(ncnn_prototxt, "wb");
   FILE *bp = fopen(ncnn_modelbin, "wb");
 
-  spilt_info.clear();
-  get_layers_spilt_info(*net_p, spilt_info);
+  split_info.clear();
+  get_layers_split_info(*net_p, split_info);
   int blob_count = 1, i = 0;
   int ncnn_layer_count = 1;
   for (i = 0; i < net.n; ++i)
@@ -761,10 +761,10 @@ void parse_network(char *cfgfile, char *weightfile, char *ncnn_prototxt,
     blob_count += get_ncnn_layer_count(net.layers[i]);
     ncnn_layer_count += get_ncnn_layer_count(net.layers[i]);
 
-    if (spilt_info[i].spilts.size() > 1)
+    if (split_info[i].splits.size() > 1)
     {
       ncnn_layer_count++;
-      blob_count += spilt_info[i].spilts.size();
+      blob_count += split_info[i].splits.size();
     }
   }
 
@@ -888,21 +888,21 @@ void parse_network(char *cfgfile, char *weightfile, char *ncnn_prototxt,
     }
 
     /**
-     * if spilts > 1, to spilt
+     * if splits > 1, to split
      */
-    if (spilt_info[i].spilts.size() > 1)
+    if (split_info[i].splits.size() > 1)
     {
-      spilt_data &spilt = spilt_info[i];
-      std::string input_name = spilt.output_blob_name;
+      split_data &split = split_info[i];
+      std::string input_name = split.output_blob_name;
       std::string outputs = "";
-      spilts_type::iterator iter = spilt.spilts.begin();
-      for (; iter != spilt.spilts.end(); iter++)
+      splits_type::iterator iter = split.splits.begin();
+      for (; iter != split.splits.end(); iter++)
       {
-        outputs += " " + spilt.output_blob_name + iter->second;
+        outputs += " " + split.output_blob_name + iter->second;
       }
 
-      int output_count = spilt.spilts.size();
-      fprintf(pp, "%-16s %s_spilt 1 %d %s %s\n", "Split", input_name.c_str(), output_count, input_name.c_str(), outputs.c_str());
+      int output_count = split.splits.size();
+      fprintf(pp, "%-16s %s_split 1 %d %s %s\n", "Split", input_name.c_str(), output_count, input_name.c_str(), outputs.c_str());
     }
   }
 

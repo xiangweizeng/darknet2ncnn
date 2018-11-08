@@ -44,7 +44,7 @@ float ObjectBox::box_iou(const ObjectBox &other) const
     return box_intersection(other) / (box_union(other));
 }
 
-ObjectsManager::ObjectsManager(size_t steps) : objext_boxs_table()
+ObjectsManager::ObjectsManager(size_t steps) : object_boxs_table()
 {
     step = prob_steps_MAX / steps;
     step = step <= 0 ? 1 : step;
@@ -52,7 +52,7 @@ ObjectsManager::ObjectsManager(size_t steps) : objext_boxs_table()
     for (int i = 0; i < prob_steps; i++)
     {
         PObjectBoxs pboxs = (new TObjectBoxs(object_compare));
-        objext_boxs_table.push_back(pboxs);
+        object_boxs_table.push_back(pboxs);
     }
 }
 
@@ -60,16 +60,16 @@ ObjectsManager::~ObjectsManager()
 {
     for (int i = 0; i < prob_steps; i++)
     {
-        delete objext_boxs_table[i];
-        objext_boxs_table[i] = NULL;
+        delete object_boxs_table[i];
+        object_boxs_table[i] = NULL;
     }
-    objext_boxs_table.clear();
+    object_boxs_table.clear();
 }
 
 void ObjectsManager::add_new_object_box(const ObjectBox &object_box)
 {
     int index = get_prob_index(object_box.prob);
-    objext_boxs_table[index]->insert(object_box);
+    object_boxs_table[index]->insert(object_box);
 }
 
 void ObjectsManager::do_objects_nms(std::vector<ObjectBox> &objects, float nms, float prob_threh)
@@ -79,7 +79,7 @@ void ObjectsManager::do_objects_nms(std::vector<ObjectBox> &objects, float nms, 
     int min_index = get_prob_index(prob_threh);
     for (; start >= min_index; start--)
     {
-        TObjectBoxs &object_boxs = *objext_boxs_table[start];
+        TObjectBoxs &object_boxs = *object_boxs_table[start];
         if (object_boxs.empty())
         {
             continue;
@@ -111,7 +111,7 @@ inline void ObjectsManager::do_object_boxs_table_nms(ObjectBoxNmsCondition &cond
 {
     for (int i = start_index; i < end_index; i++)
     {
-        TObjectBoxs &object_boxs = *objext_boxs_table[i];
+        TObjectBoxs &object_boxs = *object_boxs_table[i];
         if (object_boxs.empty())
         {
             continue;
