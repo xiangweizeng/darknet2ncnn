@@ -155,8 +155,10 @@ resnext152-32x4d  min = 3139.89  max = 3372.58  avg = 3282.99
 6. yolov3-spp
 
 # Benchmark
+
 Time： ms
-Network | i7-7700K 4.20GHz 8thread| IMX6Q,Topeet 4thead | Firefly rk3399 2thread | Firefly rk3399 4thread
+
+Network | i7-7700K 4.20GHz 8thread | IMX6Q,Topeet 4thead | Firefly rk3399 2thread | Firefly rk3399 4thread
 ---------|----------|---------|---------|---------
 cifar | 62 | 433 | 85 | 100
 alexnet | 92 | 1297 | 218 | 420
