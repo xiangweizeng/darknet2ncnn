@@ -2,6 +2,9 @@
 
 # Introduction
 Darknet2ncnn converts the darknet model to the ncnn model, enabling rapid deployment of the darknet network model on the mobile device.
+
+[Gitee](https://gitee.com/damone/darknet2ncnn) : https://gitee.com/damone/darknet2ncnn
+
 1. Support network layers except local/xor conv, rnn, lstm, gru, crnn and iseg
 1. Added all activation operations not directly supported by ncnn, implemented in the layer DarknetActivation
 1. Added the implementation of the shortcut layer, implemented in the layer DarknetShortCut

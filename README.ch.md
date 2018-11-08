@@ -3,6 +3,8 @@
 # 简介
 
 darknet2ncnn将darknet 模型转换为ncnn模型，实现darknet网络模型在移动端的快速部署
+
+[码云](https://gitee.com/damone/darknet2ncnn) : https://gitee.com/damone/darknet2ncnn
 1. 除 local/xor conv, rnn, lstm, gru, crnn及iseg外，均提供支持
 1. 自定义添加了所有ncnn不直接支持的activation操作，实现位于层DarknetActivation
 1. 自定义添加了shortcut层的实现，实现位于层DarknetShortCut
