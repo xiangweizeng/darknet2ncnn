@@ -80,9 +80,6 @@ yolov3-tiny.coco:
 yolov3.coco:
 yolov3-spp.coco:
 
-tiny-acnn-yolo-144x176: $(YOLO)
-	./yolo zoo/$@.param  zoo/$@.bin  /ssd/dataset/positive/images/08_2753-1643-0166.jpg  data/coco.names
-
 obj:
 	mkdir -p obj
 

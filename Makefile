@@ -63,8 +63,8 @@ obj:
 
 
 cifar: $(VERIFY) $(CONVERT)
-	./darknet2ncnn data/$@.cfg  data/$@.weights example/zoo/$@.param  example/zoo/$@.bin 
-	./convert_verify data/$@.cfg  data/$@.weights example/zoo/$@.param  example/zoo/$@.bin  example/data/21263_ship.png
+	./darknet2ncnn data/$@.cfg  data/$@.backup example/zoo/$@.param  example/zoo/$@.bin 
+	./convert_verify data/$@.cfg  data/$@.backup example/zoo/$@.param  example/zoo/$@.bin  example/data/21263_ship.png
 
 alexnet.net: 
 darknet.net:

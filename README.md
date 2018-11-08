@@ -10,7 +10,7 @@ Darknet2ncnn converts the darknet model to the ncnn model, enabling rapid deploy
 
 # Install&Usage
 
-1. Install opencv-dev, gcc, g++, make
+1. Install opencv-dev, gcc, g++, make, cmake
 
 2. Download source
 ```sh
@@ -19,47 +19,59 @@ git clone https://github.com/xiangweizeng/darknet2ncnn.git
 3. Init submodule
 ```sh
 cd darknet2ncnn
-
+git submodule init
+git submodule update
 ```
 4. build darknet
 ```sh
-cd darknet2ncnn
-
+cd darknet2
+make -j8
+rm libdarknet.so
 ```
 5. build ncnn
 ```sh
-cd darknet2ncnn
-
+# workspace darknet2ncnn
+cd ncnn
+mkdir build
+cd build
+cmake ..
+make -j8
+make install
+cd ../../
 ```
 6. Build darknet2ncnn , convert_verify and libdarknet2ncnn.a
 ```sh
-cd darknet2ncnn
-
+# workspace darknet2ncnn
+make -j8
 ```
 7. Convert and verify
 ```sh
-cd darknet2ncnn
+# workspace darknet2ncnn
+make cifar
+make tiny-yolov3.net
 
 ```
 8. Build example
 ```sh
-cd darknet2ncnn
-
+# workspace darknet2ncnn
+cd example
+make -j2
 ```
 10. Run classifier
 ```sh
-cd darknet2ncnn
-
+# workspace example
+make cifar.cifar
 ```
 11. Run Yolo
 ```sh
-cd darknet2ncnn
-
+# workspace example
+ make yolov3-tiny.coco
 ```
 12. Build benchmark
 ```sh
-cd darknet2ncnn
-
+# workspace darknet2ncnn
+cd benchmark
+make 
 ```
 13. Run benchmark
 - Firefly RK3399 thread2
