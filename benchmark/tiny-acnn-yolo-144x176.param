@@ -1,0 +1,45 @@
+7767517
+43 43
+Input            data 0 1 data 0=176 1=144 2=3
+Convolution      conv_0 1 1 data conv_0 0=8 1=3 2=1 3=2 4=1 5=0 6=216
+BatchNorm        conv_0_batch_norm 1 1   conv_0   conv_0_batch_norm 0=8 1=0.00001
+ReLU             conv_0_activation 1 1 conv_0_batch_norm conv_0_activation 0=0.1
+ConvolutionDepthWise conv_1 1 1 conv_0_activation conv_1 0=8 1=3 2=1 3=1 4=1 5=0 6=72 7=8
+BatchNorm        conv_1_batch_norm 1 1   conv_1   conv_1_batch_norm 0=8 1=0.00001
+ReLU             conv_1_activation 1 1 conv_1_batch_norm conv_1_activation 0=0.1
+Convolution      conv_2 1 1 conv_1_activation conv_2 0=32 1=1 2=1 3=2 4=0 5=0 6=256
+BatchNorm        conv_2_batch_norm 1 1   conv_2   conv_2_batch_norm 0=32 1=0.00001
+ReLU             conv_2_activation 1 1 conv_2_batch_norm conv_2_activation 0=0.1
+ConvolutionDepthWise conv_3 1 1 conv_2_activation conv_3 0=32 1=3 2=1 3=1 4=1 5=0 6=288 7=32
+BatchNorm        conv_3_batch_norm 1 1   conv_3   conv_3_batch_norm 0=32 1=0.00001
+ReLU             conv_3_activation 1 1 conv_3_batch_norm conv_3_activation 0=0.1
+Convolution      conv_4 1 1 conv_3_activation conv_4 0=64 1=1 2=1 3=2 4=0 5=0 6=2048
+BatchNorm        conv_4_batch_norm 1 1   conv_4   conv_4_batch_norm 0=64 1=0.00001
+ReLU             conv_4_activation 1 1 conv_4_batch_norm conv_4_activation 0=0.1
+ConvolutionDepthWise conv_5 1 1 conv_4_activation conv_5 0=64 1=3 2=1 3=1 4=1 5=0 6=576 7=64
+BatchNorm        conv_5_batch_norm 1 1   conv_5   conv_5_batch_norm 0=64 1=0.00001
+ReLU             conv_5_activation 1 1 conv_5_batch_norm conv_5_activation 0=0.1
+Convolution      conv_6 1 1 conv_5_activation conv_6 0=128 1=1 2=1 3=2 4=0 5=0 6=8192
+BatchNorm        conv_6_batch_norm 1 1   conv_6   conv_6_batch_norm 0=128 1=0.00001
+ReLU             conv_6_activation 1 1 conv_6_batch_norm conv_6_activation 0=0.1
+ConvolutionDepthWise conv_7 1 1 conv_6_activation conv_7 0=128 1=3 2=1 3=1 4=1 5=0 6=1152 7=128
+BatchNorm        conv_7_batch_norm 1 1   conv_7   conv_7_batch_norm 0=128 1=0.00001
+ReLU             conv_7_activation 1 1 conv_7_batch_norm conv_7_activation 0=0.1
+Convolution      conv_8 1 1 conv_7_activation conv_8 0=256 1=1 2=1 3=1 4=0 5=0 6=32768
+BatchNorm        conv_8_batch_norm 1 1   conv_8   conv_8_batch_norm 0=256 1=0.00001
+ReLU             conv_8_activation 1 1 conv_8_batch_norm conv_8_activation 0=0.1
+ConvolutionDepthWise conv_9 1 1 conv_8_activation conv_9 0=256 1=3 2=1 3=1 4=1 5=0 6=2304 7=256
+BatchNorm        conv_9_batch_norm 1 1   conv_9   conv_9_batch_norm 0=256 1=0.00001
+ReLU             conv_9_activation 1 1 conv_9_batch_norm conv_9_activation 0=0.1
+Convolution      conv_10 1 1 conv_9_activation conv_10 0=512 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_10_batch_norm 1 1   conv_10   conv_10_batch_norm 0=512 1=0.00001
+ReLU             conv_10_activation 1 1 conv_10_batch_norm conv_10_activation 0=0.1
+ConvolutionDepthWise conv_11 1 1 conv_10_activation conv_11 0=512 1=3 2=1 3=1 4=1 5=0 6=4608 7=512
+BatchNorm        conv_11_batch_norm 1 1   conv_11   conv_11_batch_norm 0=512 1=0.00001
+ReLU             conv_11_activation 1 1 conv_11_batch_norm conv_11_activation 0=0.1
+Convolution      conv_12 1 1 conv_11_activation conv_12 0=512 1=1 2=1 3=1 4=0 5=0 6=262144
+BatchNorm        conv_12_batch_norm 1 1   conv_12   conv_12_batch_norm 0=512 1=0.00001
+ReLU             conv_12_activation 1 1 conv_12_batch_norm conv_12_activation 0=0.1
+Convolution      conv_13 1 1 conv_12_activation conv_13 0=18 1=1 2=1 3=1 4=0 5=1 6=9216
+DarknetActivation conv_13_activation 1 1 conv_13 conv_13_activation 0=3
+YoloDetectionOutput region_14 1 1 conv_13_activation region_14 0=1 1=3 2=0.25f 3=0.45f -23304=6,1.610000,1.680000,2.520000,2.760000,3.460000,3.940000

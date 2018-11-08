@@ -1,0 +1,66 @@
+7767517
+64 64
+Input            data 0 1 data 0=256 1=256 2=3
+Convolution      conv_0 1 1 data conv_0 0=32 1=3 2=1 3=1 4=1 5=0 6=864
+BatchNorm        conv_0_batch_norm 1 1   conv_0   conv_0_batch_norm 0=32 1=0.00001
+ReLU             conv_0_activation 1 1 conv_0_batch_norm conv_0_activation 0=0.1
+Pooling          maxpool_1 1 1 conv_0_activation maxpool_1 0=0 1=2 2=2 3=0 5=1 13=0 14=1 15=1
+Convolution      conv_2 1 1 maxpool_1 conv_2 0=64 1=3 2=1 3=1 4=1 5=0 6=18432
+BatchNorm        conv_2_batch_norm 1 1   conv_2   conv_2_batch_norm 0=64 1=0.00001
+ReLU             conv_2_activation 1 1 conv_2_batch_norm conv_2_activation 0=0.1
+Pooling          maxpool_3 1 1 conv_2_activation maxpool_3 0=0 1=2 2=2 3=0 5=1 13=0 14=1 15=1
+Convolution      conv_4 1 1 maxpool_3 conv_4 0=128 1=3 2=1 3=1 4=1 5=0 6=73728
+BatchNorm        conv_4_batch_norm 1 1   conv_4   conv_4_batch_norm 0=128 1=0.00001
+ReLU             conv_4_activation 1 1 conv_4_batch_norm conv_4_activation 0=0.1
+Convolution      conv_5 1 1 conv_4_activation conv_5 0=64 1=1 2=1 3=1 4=0 5=0 6=8192
+BatchNorm        conv_5_batch_norm 1 1   conv_5   conv_5_batch_norm 0=64 1=0.00001
+ReLU             conv_5_activation 1 1 conv_5_batch_norm conv_5_activation 0=0.1
+Convolution      conv_6 1 1 conv_5_activation conv_6 0=128 1=3 2=1 3=1 4=1 5=0 6=73728
+BatchNorm        conv_6_batch_norm 1 1   conv_6   conv_6_batch_norm 0=128 1=0.00001
+ReLU             conv_6_activation 1 1 conv_6_batch_norm conv_6_activation 0=0.1
+Pooling          maxpool_7 1 1 conv_6_activation maxpool_7 0=0 1=2 2=2 3=0 5=1 13=0 14=1 15=1
+Convolution      conv_8 1 1 maxpool_7 conv_8 0=256 1=3 2=1 3=1 4=1 5=0 6=294912
+BatchNorm        conv_8_batch_norm 1 1   conv_8   conv_8_batch_norm 0=256 1=0.00001
+ReLU             conv_8_activation 1 1 conv_8_batch_norm conv_8_activation 0=0.1
+Convolution      conv_9 1 1 conv_8_activation conv_9 0=128 1=1 2=1 3=1 4=0 5=0 6=32768
+BatchNorm        conv_9_batch_norm 1 1   conv_9   conv_9_batch_norm 0=128 1=0.00001
+ReLU             conv_9_activation 1 1 conv_9_batch_norm conv_9_activation 0=0.1
+Convolution      conv_10 1 1 conv_9_activation conv_10 0=256 1=3 2=1 3=1 4=1 5=0 6=294912
+BatchNorm        conv_10_batch_norm 1 1   conv_10   conv_10_batch_norm 0=256 1=0.00001
+ReLU             conv_10_activation 1 1 conv_10_batch_norm conv_10_activation 0=0.1
+Pooling          maxpool_11 1 1 conv_10_activation maxpool_11 0=0 1=2 2=2 3=0 5=1 13=0 14=1 15=1
+Convolution      conv_12 1 1 maxpool_11 conv_12 0=512 1=3 2=1 3=1 4=1 5=0 6=1179648
+BatchNorm        conv_12_batch_norm 1 1   conv_12   conv_12_batch_norm 0=512 1=0.00001
+ReLU             conv_12_activation 1 1 conv_12_batch_norm conv_12_activation 0=0.1
+Convolution      conv_13 1 1 conv_12_activation conv_13 0=256 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_13_batch_norm 1 1   conv_13   conv_13_batch_norm 0=256 1=0.00001
+ReLU             conv_13_activation 1 1 conv_13_batch_norm conv_13_activation 0=0.1
+Convolution      conv_14 1 1 conv_13_activation conv_14 0=512 1=3 2=1 3=1 4=1 5=0 6=1179648
+BatchNorm        conv_14_batch_norm 1 1   conv_14   conv_14_batch_norm 0=512 1=0.00001
+ReLU             conv_14_activation 1 1 conv_14_batch_norm conv_14_activation 0=0.1
+Convolution      conv_15 1 1 conv_14_activation conv_15 0=256 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_15_batch_norm 1 1   conv_15   conv_15_batch_norm 0=256 1=0.00001
+ReLU             conv_15_activation 1 1 conv_15_batch_norm conv_15_activation 0=0.1
+Convolution      conv_16 1 1 conv_15_activation conv_16 0=512 1=3 2=1 3=1 4=1 5=0 6=1179648
+BatchNorm        conv_16_batch_norm 1 1   conv_16   conv_16_batch_norm 0=512 1=0.00001
+ReLU             conv_16_activation 1 1 conv_16_batch_norm conv_16_activation 0=0.1
+Pooling          maxpool_17 1 1 conv_16_activation maxpool_17 0=0 1=2 2=2 3=0 5=1 13=0 14=1 15=1
+Convolution      conv_18 1 1 maxpool_17 conv_18 0=1024 1=3 2=1 3=1 4=1 5=0 6=4718592
+BatchNorm        conv_18_batch_norm 1 1   conv_18   conv_18_batch_norm 0=1024 1=0.00001
+ReLU             conv_18_activation 1 1 conv_18_batch_norm conv_18_activation 0=0.1
+Convolution      conv_19 1 1 conv_18_activation conv_19 0=512 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_19_batch_norm 1 1   conv_19   conv_19_batch_norm 0=512 1=0.00001
+ReLU             conv_19_activation 1 1 conv_19_batch_norm conv_19_activation 0=0.1
+Convolution      conv_20 1 1 conv_19_activation conv_20 0=1024 1=3 2=1 3=1 4=1 5=0 6=4718592
+BatchNorm        conv_20_batch_norm 1 1   conv_20   conv_20_batch_norm 0=1024 1=0.00001
+ReLU             conv_20_activation 1 1 conv_20_batch_norm conv_20_activation 0=0.1
+Convolution      conv_21 1 1 conv_20_activation conv_21 0=512 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_21_batch_norm 1 1   conv_21   conv_21_batch_norm 0=512 1=0.00001
+ReLU             conv_21_activation 1 1 conv_21_batch_norm conv_21_activation 0=0.1
+Convolution      conv_22 1 1 conv_21_activation conv_22 0=1024 1=3 2=1 3=1 4=1 5=0 6=4718592
+BatchNorm        conv_22_batch_norm 1 1   conv_22   conv_22_batch_norm 0=1024 1=0.00001
+ReLU             conv_22_activation 1 1 conv_22_batch_norm conv_22_activation 0=0.1
+Convolution      conv_23 1 1 conv_22_activation conv_23 0=1000 1=1 2=1 3=1 4=0 5=1 6=1024000
+DarknetActivation conv_23_activation 1 1 conv_23 conv_23_activation 0=3
+Pooling          gloabl_avg_pool_24 1 1 conv_23_activation gloabl_avg_pool_24 0=1 4=1
+Softmax          softmax_25 1 1 gloabl_avg_pool_24 softmax_25 0=0

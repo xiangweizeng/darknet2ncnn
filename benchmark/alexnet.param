@@ -1,0 +1,25 @@
+7767517
+23 23
+Input            data 0 1 data 0=227 1=227 2=3
+Convolution      conv_0 1 1 data conv_0 0=96 1=11 2=1 3=4 4=0 5=1 6=34848
+ReLU             conv_0_activation 1 1 conv_0 conv_0_activation 0=0.0
+Pooling          maxpool_1 1 1 conv_0_activation maxpool_1 0=0 1=3 2=2 3=0 5=1 13=0 14=1 15=1
+Convolution      conv_2 1 1 maxpool_1 conv_2 0=256 1=5 2=1 3=1 4=2 5=1 6=614400
+ReLU             conv_2_activation 1 1 conv_2 conv_2_activation 0=0.0
+Pooling          maxpool_3 1 1 conv_2_activation maxpool_3 0=0 1=3 2=2 3=0 5=1 13=0 14=1 15=1
+Convolution      conv_4 1 1 maxpool_3 conv_4 0=384 1=3 2=1 3=1 4=1 5=1 6=884736
+ReLU             conv_4_activation 1 1 conv_4 conv_4_activation 0=0.0
+Convolution      conv_5 1 1 conv_4_activation conv_5 0=384 1=3 2=1 3=1 4=1 5=1 6=1327104
+ReLU             conv_5_activation 1 1 conv_5 conv_5_activation 0=0.0
+Convolution      conv_6 1 1 conv_5_activation conv_6 0=256 1=3 2=1 3=1 4=1 5=1 6=884736
+ReLU             conv_6_activation 1 1 conv_6 conv_6_activation 0=0.0
+Pooling          maxpool_7 1 1 conv_6_activation maxpool_7 0=0 1=3 2=2 3=0 5=1 13=0 14=1 15=1
+InnerProduct     connected_8 1 1 maxpool_7 connected_8 0=4096 1=1 2=37748736
+ReLU             connected_8_activation 1 1 connected_8 connected_8_activation 0=0.0
+Dropout          dropout_9 1 1 connected_8_activation dropout_9
+InnerProduct     connected_10 1 1 dropout_9 connected_10 0=4096 1=1 2=16777216
+ReLU             connected_10_activation 1 1 connected_10 connected_10_activation 0=0.0
+Dropout          dropout_11 1 1 connected_10_activation dropout_11
+InnerProduct     connected_12 1 1 dropout_11 connected_12 0=1000 1=1 2=4096000
+DarknetActivation connected_12_activation 1 1 connected_12 connected_12_activation 0=3
+Softmax          softmax_13 1 1 connected_12_activation softmax_13 0=0

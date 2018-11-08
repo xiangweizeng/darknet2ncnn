@@ -1,0 +1,611 @@
+7767517
+609 659
+Input            data 0 1 data 0=256 1=256 2=3
+Convolution      conv_0 1 1 data conv_0 0=64 1=7 2=1 3=2 4=3 5=0 6=9408
+BatchNorm        conv_0_batch_norm 1 1   conv_0   conv_0_batch_norm 0=64 1=0.00001
+ReLU             conv_0_activation 1 1 conv_0_batch_norm conv_0_activation 0=0.1
+Pooling          maxpool_1 1 1 conv_0_activation maxpool_1 0=0 1=2 2=2 3=0 5=1 13=0 14=1 15=1
+Split            maxpool_1_spilt 1 2 maxpool_1  maxpool_1_spilt_0 maxpool_1_spilt_1
+Convolution      conv_2 1 1 maxpool_1_spilt_0 conv_2 0=64 1=1 2=1 3=1 4=0 5=0 6=4096
+BatchNorm        conv_2_batch_norm 1 1   conv_2   conv_2_batch_norm 0=64 1=0.00001
+ReLU             conv_2_activation 1 1 conv_2_batch_norm conv_2_activation 0=0.1
+ConvolutionDepthWise conv_3 1 1 conv_2_activation conv_3 0=64 1=3 2=1 3=1 4=1 5=0 6=1152 7=32
+BatchNorm        conv_3_batch_norm 1 1   conv_3   conv_3_batch_norm 0=64 1=0.00001
+ReLU             conv_3_activation 1 1 conv_3_batch_norm conv_3_activation 0=0.1
+Convolution      conv_4 1 1 conv_3_activation conv_4 0=512 1=1 2=1 3=1 4=0 5=0 6=32768
+BatchNorm        conv_4_batch_norm 1 1   conv_4   conv_4_batch_norm 0=512 1=0.00001
+DarknetActivation conv_4_activation 1 1 conv_4_batch_norm conv_4_activation 0=3
+DarknetShortcut  shortcut_5 2 1 maxpool_1_spilt_1 conv_4_activation shortcut_5 0=1.000000 1=1.000000
+ReLU             shortcut_5_activation 1 1 shortcut_5 shortcut_5_activation 0=0.1
+Split            shortcut_5_activation_spilt 1 2 shortcut_5_activation  shortcut_5_activation_spilt_0 shortcut_5_activation_spilt_1
+Convolution      conv_6 1 1 shortcut_5_activation_spilt_0 conv_6 0=64 1=1 2=1 3=1 4=0 5=0 6=32768
+BatchNorm        conv_6_batch_norm 1 1   conv_6   conv_6_batch_norm 0=64 1=0.00001
+ReLU             conv_6_activation 1 1 conv_6_batch_norm conv_6_activation 0=0.1
+ConvolutionDepthWise conv_7 1 1 conv_6_activation conv_7 0=64 1=3 2=1 3=1 4=1 5=0 6=1152 7=32
+BatchNorm        conv_7_batch_norm 1 1   conv_7   conv_7_batch_norm 0=64 1=0.00001
+ReLU             conv_7_activation 1 1 conv_7_batch_norm conv_7_activation 0=0.1
+Convolution      conv_8 1 1 conv_7_activation conv_8 0=512 1=1 2=1 3=1 4=0 5=0 6=32768
+BatchNorm        conv_8_batch_norm 1 1   conv_8   conv_8_batch_norm 0=512 1=0.00001
+DarknetActivation conv_8_activation 1 1 conv_8_batch_norm conv_8_activation 0=3
+DarknetShortcut  shortcut_9 2 1 shortcut_5_activation_spilt_1 conv_8_activation shortcut_9 0=1.000000 1=1.000000
+ReLU             shortcut_9_activation 1 1 shortcut_9 shortcut_9_activation 0=0.1
+Split            shortcut_9_activation_spilt 1 2 shortcut_9_activation  shortcut_9_activation_spilt_0 shortcut_9_activation_spilt_1
+Convolution      conv_10 1 1 shortcut_9_activation_spilt_0 conv_10 0=64 1=1 2=1 3=1 4=0 5=0 6=32768
+BatchNorm        conv_10_batch_norm 1 1   conv_10   conv_10_batch_norm 0=64 1=0.00001
+ReLU             conv_10_activation 1 1 conv_10_batch_norm conv_10_activation 0=0.1
+ConvolutionDepthWise conv_11 1 1 conv_10_activation conv_11 0=64 1=3 2=1 3=1 4=1 5=0 6=1152 7=32
+BatchNorm        conv_11_batch_norm 1 1   conv_11   conv_11_batch_norm 0=64 1=0.00001
+ReLU             conv_11_activation 1 1 conv_11_batch_norm conv_11_activation 0=0.1
+Convolution      conv_12 1 1 conv_11_activation conv_12 0=512 1=1 2=1 3=1 4=0 5=0 6=32768
+BatchNorm        conv_12_batch_norm 1 1   conv_12   conv_12_batch_norm 0=512 1=0.00001
+DarknetActivation conv_12_activation 1 1 conv_12_batch_norm conv_12_activation 0=3
+DarknetShortcut  shortcut_13 2 1 shortcut_9_activation_spilt_1 conv_12_activation shortcut_13 0=1.000000 1=1.000000
+ReLU             shortcut_13_activation 1 1 shortcut_13 shortcut_13_activation 0=0.1
+Split            shortcut_13_activation_spilt 1 2 shortcut_13_activation  shortcut_13_activation_spilt_0 shortcut_13_activation_spilt_1
+Convolution      conv_14 1 1 shortcut_13_activation_spilt_0 conv_14 0=128 1=1 2=1 3=1 4=0 5=0 6=65536
+BatchNorm        conv_14_batch_norm 1 1   conv_14   conv_14_batch_norm 0=128 1=0.00001
+ReLU             conv_14_activation 1 1 conv_14_batch_norm conv_14_activation 0=0.1
+ConvolutionDepthWise conv_15 1 1 conv_14_activation conv_15 0=128 1=3 2=1 3=2 4=1 5=0 6=4608 7=32
+BatchNorm        conv_15_batch_norm 1 1   conv_15   conv_15_batch_norm 0=128 1=0.00001
+ReLU             conv_15_activation 1 1 conv_15_batch_norm conv_15_activation 0=0.1
+Convolution      conv_16 1 1 conv_15_activation conv_16 0=1024 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_16_batch_norm 1 1   conv_16   conv_16_batch_norm 0=1024 1=0.00001
+DarknetActivation conv_16_activation 1 1 conv_16_batch_norm conv_16_activation 0=3
+DarknetShortcut  shortcut_17 2 1 shortcut_13_activation_spilt_1 conv_16_activation shortcut_17 0=1.000000 1=1.000000
+ReLU             shortcut_17_activation 1 1 shortcut_17 shortcut_17_activation 0=0.1
+Split            shortcut_17_activation_spilt 1 2 shortcut_17_activation  shortcut_17_activation_spilt_0 shortcut_17_activation_spilt_1
+Convolution      conv_18 1 1 shortcut_17_activation_spilt_0 conv_18 0=128 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_18_batch_norm 1 1   conv_18   conv_18_batch_norm 0=128 1=0.00001
+ReLU             conv_18_activation 1 1 conv_18_batch_norm conv_18_activation 0=0.1
+ConvolutionDepthWise conv_19 1 1 conv_18_activation conv_19 0=128 1=3 2=1 3=1 4=1 5=0 6=4608 7=32
+BatchNorm        conv_19_batch_norm 1 1   conv_19   conv_19_batch_norm 0=128 1=0.00001
+ReLU             conv_19_activation 1 1 conv_19_batch_norm conv_19_activation 0=0.1
+Convolution      conv_20 1 1 conv_19_activation conv_20 0=1024 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_20_batch_norm 1 1   conv_20   conv_20_batch_norm 0=1024 1=0.00001
+DarknetActivation conv_20_activation 1 1 conv_20_batch_norm conv_20_activation 0=3
+DarknetShortcut  shortcut_21 2 1 shortcut_17_activation_spilt_1 conv_20_activation shortcut_21 0=1.000000 1=1.000000
+ReLU             shortcut_21_activation 1 1 shortcut_21 shortcut_21_activation 0=0.1
+Split            shortcut_21_activation_spilt 1 2 shortcut_21_activation  shortcut_21_activation_spilt_0 shortcut_21_activation_spilt_1
+Convolution      conv_22 1 1 shortcut_21_activation_spilt_0 conv_22 0=128 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_22_batch_norm 1 1   conv_22   conv_22_batch_norm 0=128 1=0.00001
+ReLU             conv_22_activation 1 1 conv_22_batch_norm conv_22_activation 0=0.1
+ConvolutionDepthWise conv_23 1 1 conv_22_activation conv_23 0=128 1=3 2=1 3=1 4=1 5=0 6=4608 7=32
+BatchNorm        conv_23_batch_norm 1 1   conv_23   conv_23_batch_norm 0=128 1=0.00001
+ReLU             conv_23_activation 1 1 conv_23_batch_norm conv_23_activation 0=0.1
+Convolution      conv_24 1 1 conv_23_activation conv_24 0=1024 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_24_batch_norm 1 1   conv_24   conv_24_batch_norm 0=1024 1=0.00001
+DarknetActivation conv_24_activation 1 1 conv_24_batch_norm conv_24_activation 0=3
+DarknetShortcut  shortcut_25 2 1 shortcut_21_activation_spilt_1 conv_24_activation shortcut_25 0=1.000000 1=1.000000
+ReLU             shortcut_25_activation 1 1 shortcut_25 shortcut_25_activation 0=0.1
+Split            shortcut_25_activation_spilt 1 2 shortcut_25_activation  shortcut_25_activation_spilt_0 shortcut_25_activation_spilt_1
+Convolution      conv_26 1 1 shortcut_25_activation_spilt_0 conv_26 0=128 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_26_batch_norm 1 1   conv_26   conv_26_batch_norm 0=128 1=0.00001
+ReLU             conv_26_activation 1 1 conv_26_batch_norm conv_26_activation 0=0.1
+ConvolutionDepthWise conv_27 1 1 conv_26_activation conv_27 0=128 1=3 2=1 3=1 4=1 5=0 6=4608 7=32
+BatchNorm        conv_27_batch_norm 1 1   conv_27   conv_27_batch_norm 0=128 1=0.00001
+ReLU             conv_27_activation 1 1 conv_27_batch_norm conv_27_activation 0=0.1
+Convolution      conv_28 1 1 conv_27_activation conv_28 0=1024 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_28_batch_norm 1 1   conv_28   conv_28_batch_norm 0=1024 1=0.00001
+DarknetActivation conv_28_activation 1 1 conv_28_batch_norm conv_28_activation 0=3
+DarknetShortcut  shortcut_29 2 1 shortcut_25_activation_spilt_1 conv_28_activation shortcut_29 0=1.000000 1=1.000000
+ReLU             shortcut_29_activation 1 1 shortcut_29 shortcut_29_activation 0=0.1
+Split            shortcut_29_activation_spilt 1 2 shortcut_29_activation  shortcut_29_activation_spilt_0 shortcut_29_activation_spilt_1
+Convolution      conv_30 1 1 shortcut_29_activation_spilt_0 conv_30 0=128 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_30_batch_norm 1 1   conv_30   conv_30_batch_norm 0=128 1=0.00001
+ReLU             conv_30_activation 1 1 conv_30_batch_norm conv_30_activation 0=0.1
+ConvolutionDepthWise conv_31 1 1 conv_30_activation conv_31 0=128 1=3 2=1 3=1 4=1 5=0 6=4608 7=32
+BatchNorm        conv_31_batch_norm 1 1   conv_31   conv_31_batch_norm 0=128 1=0.00001
+ReLU             conv_31_activation 1 1 conv_31_batch_norm conv_31_activation 0=0.1
+Convolution      conv_32 1 1 conv_31_activation conv_32 0=1024 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_32_batch_norm 1 1   conv_32   conv_32_batch_norm 0=1024 1=0.00001
+DarknetActivation conv_32_activation 1 1 conv_32_batch_norm conv_32_activation 0=3
+DarknetShortcut  shortcut_33 2 1 shortcut_29_activation_spilt_1 conv_32_activation shortcut_33 0=1.000000 1=1.000000
+ReLU             shortcut_33_activation 1 1 shortcut_33 shortcut_33_activation 0=0.1
+Split            shortcut_33_activation_spilt 1 2 shortcut_33_activation  shortcut_33_activation_spilt_0 shortcut_33_activation_spilt_1
+Convolution      conv_34 1 1 shortcut_33_activation_spilt_0 conv_34 0=128 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_34_batch_norm 1 1   conv_34   conv_34_batch_norm 0=128 1=0.00001
+ReLU             conv_34_activation 1 1 conv_34_batch_norm conv_34_activation 0=0.1
+ConvolutionDepthWise conv_35 1 1 conv_34_activation conv_35 0=128 1=3 2=1 3=1 4=1 5=0 6=4608 7=32
+BatchNorm        conv_35_batch_norm 1 1   conv_35   conv_35_batch_norm 0=128 1=0.00001
+ReLU             conv_35_activation 1 1 conv_35_batch_norm conv_35_activation 0=0.1
+Convolution      conv_36 1 1 conv_35_activation conv_36 0=1024 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_36_batch_norm 1 1   conv_36   conv_36_batch_norm 0=1024 1=0.00001
+DarknetActivation conv_36_activation 1 1 conv_36_batch_norm conv_36_activation 0=3
+DarknetShortcut  shortcut_37 2 1 shortcut_33_activation_spilt_1 conv_36_activation shortcut_37 0=1.000000 1=1.000000
+ReLU             shortcut_37_activation 1 1 shortcut_37 shortcut_37_activation 0=0.1
+Split            shortcut_37_activation_spilt 1 2 shortcut_37_activation  shortcut_37_activation_spilt_0 shortcut_37_activation_spilt_1
+Convolution      conv_38 1 1 shortcut_37_activation_spilt_0 conv_38 0=128 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_38_batch_norm 1 1   conv_38   conv_38_batch_norm 0=128 1=0.00001
+ReLU             conv_38_activation 1 1 conv_38_batch_norm conv_38_activation 0=0.1
+ConvolutionDepthWise conv_39 1 1 conv_38_activation conv_39 0=128 1=3 2=1 3=1 4=1 5=0 6=4608 7=32
+BatchNorm        conv_39_batch_norm 1 1   conv_39   conv_39_batch_norm 0=128 1=0.00001
+ReLU             conv_39_activation 1 1 conv_39_batch_norm conv_39_activation 0=0.1
+Convolution      conv_40 1 1 conv_39_activation conv_40 0=1024 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_40_batch_norm 1 1   conv_40   conv_40_batch_norm 0=1024 1=0.00001
+DarknetActivation conv_40_activation 1 1 conv_40_batch_norm conv_40_activation 0=3
+DarknetShortcut  shortcut_41 2 1 shortcut_37_activation_spilt_1 conv_40_activation shortcut_41 0=1.000000 1=1.000000
+ReLU             shortcut_41_activation 1 1 shortcut_41 shortcut_41_activation 0=0.1
+Split            shortcut_41_activation_spilt 1 2 shortcut_41_activation  shortcut_41_activation_spilt_0 shortcut_41_activation_spilt_1
+Convolution      conv_42 1 1 shortcut_41_activation_spilt_0 conv_42 0=128 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_42_batch_norm 1 1   conv_42   conv_42_batch_norm 0=128 1=0.00001
+ReLU             conv_42_activation 1 1 conv_42_batch_norm conv_42_activation 0=0.1
+ConvolutionDepthWise conv_43 1 1 conv_42_activation conv_43 0=128 1=3 2=1 3=1 4=1 5=0 6=4608 7=32
+BatchNorm        conv_43_batch_norm 1 1   conv_43   conv_43_batch_norm 0=128 1=0.00001
+ReLU             conv_43_activation 1 1 conv_43_batch_norm conv_43_activation 0=0.1
+Convolution      conv_44 1 1 conv_43_activation conv_44 0=1024 1=1 2=1 3=1 4=0 5=0 6=131072
+BatchNorm        conv_44_batch_norm 1 1   conv_44   conv_44_batch_norm 0=1024 1=0.00001
+DarknetActivation conv_44_activation 1 1 conv_44_batch_norm conv_44_activation 0=3
+DarknetShortcut  shortcut_45 2 1 shortcut_41_activation_spilt_1 conv_44_activation shortcut_45 0=1.000000 1=1.000000
+ReLU             shortcut_45_activation 1 1 shortcut_45 shortcut_45_activation 0=0.1
+Split            shortcut_45_activation_spilt 1 2 shortcut_45_activation  shortcut_45_activation_spilt_0 shortcut_45_activation_spilt_1
+Convolution      conv_46 1 1 shortcut_45_activation_spilt_0 conv_46 0=256 1=1 2=1 3=1 4=0 5=0 6=262144
+BatchNorm        conv_46_batch_norm 1 1   conv_46   conv_46_batch_norm 0=256 1=0.00001
+ReLU             conv_46_activation 1 1 conv_46_batch_norm conv_46_activation 0=0.1
+ConvolutionDepthWise conv_47 1 1 conv_46_activation conv_47 0=256 1=3 2=1 3=2 4=1 5=0 6=18432 7=32
+BatchNorm        conv_47_batch_norm 1 1   conv_47   conv_47_batch_norm 0=256 1=0.00001
+ReLU             conv_47_activation 1 1 conv_47_batch_norm conv_47_activation 0=0.1
+Convolution      conv_48 1 1 conv_47_activation conv_48 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_48_batch_norm 1 1   conv_48   conv_48_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_48_activation 1 1 conv_48_batch_norm conv_48_activation 0=3
+DarknetShortcut  shortcut_49 2 1 shortcut_45_activation_spilt_1 conv_48_activation shortcut_49 0=1.000000 1=1.000000
+ReLU             shortcut_49_activation 1 1 shortcut_49 shortcut_49_activation 0=0.1
+Split            shortcut_49_activation_spilt 1 2 shortcut_49_activation  shortcut_49_activation_spilt_0 shortcut_49_activation_spilt_1
+Convolution      conv_50 1 1 shortcut_49_activation_spilt_0 conv_50 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_50_batch_norm 1 1   conv_50   conv_50_batch_norm 0=256 1=0.00001
+ReLU             conv_50_activation 1 1 conv_50_batch_norm conv_50_activation 0=0.1
+ConvolutionDepthWise conv_51 1 1 conv_50_activation conv_51 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_51_batch_norm 1 1   conv_51   conv_51_batch_norm 0=256 1=0.00001
+ReLU             conv_51_activation 1 1 conv_51_batch_norm conv_51_activation 0=0.1
+Convolution      conv_52 1 1 conv_51_activation conv_52 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_52_batch_norm 1 1   conv_52   conv_52_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_52_activation 1 1 conv_52_batch_norm conv_52_activation 0=3
+DarknetShortcut  shortcut_53 2 1 shortcut_49_activation_spilt_1 conv_52_activation shortcut_53 0=1.000000 1=1.000000
+ReLU             shortcut_53_activation 1 1 shortcut_53 shortcut_53_activation 0=0.1
+Split            shortcut_53_activation_spilt 1 2 shortcut_53_activation  shortcut_53_activation_spilt_0 shortcut_53_activation_spilt_1
+Convolution      conv_54 1 1 shortcut_53_activation_spilt_0 conv_54 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_54_batch_norm 1 1   conv_54   conv_54_batch_norm 0=256 1=0.00001
+ReLU             conv_54_activation 1 1 conv_54_batch_norm conv_54_activation 0=0.1
+ConvolutionDepthWise conv_55 1 1 conv_54_activation conv_55 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_55_batch_norm 1 1   conv_55   conv_55_batch_norm 0=256 1=0.00001
+ReLU             conv_55_activation 1 1 conv_55_batch_norm conv_55_activation 0=0.1
+Convolution      conv_56 1 1 conv_55_activation conv_56 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_56_batch_norm 1 1   conv_56   conv_56_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_56_activation 1 1 conv_56_batch_norm conv_56_activation 0=3
+DarknetShortcut  shortcut_57 2 1 shortcut_53_activation_spilt_1 conv_56_activation shortcut_57 0=1.000000 1=1.000000
+ReLU             shortcut_57_activation 1 1 shortcut_57 shortcut_57_activation 0=0.1
+Split            shortcut_57_activation_spilt 1 2 shortcut_57_activation  shortcut_57_activation_spilt_0 shortcut_57_activation_spilt_1
+Convolution      conv_58 1 1 shortcut_57_activation_spilt_0 conv_58 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_58_batch_norm 1 1   conv_58   conv_58_batch_norm 0=256 1=0.00001
+ReLU             conv_58_activation 1 1 conv_58_batch_norm conv_58_activation 0=0.1
+ConvolutionDepthWise conv_59 1 1 conv_58_activation conv_59 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_59_batch_norm 1 1   conv_59   conv_59_batch_norm 0=256 1=0.00001
+ReLU             conv_59_activation 1 1 conv_59_batch_norm conv_59_activation 0=0.1
+Convolution      conv_60 1 1 conv_59_activation conv_60 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_60_batch_norm 1 1   conv_60   conv_60_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_60_activation 1 1 conv_60_batch_norm conv_60_activation 0=3
+DarknetShortcut  shortcut_61 2 1 shortcut_57_activation_spilt_1 conv_60_activation shortcut_61 0=1.000000 1=1.000000
+ReLU             shortcut_61_activation 1 1 shortcut_61 shortcut_61_activation 0=0.1
+Split            shortcut_61_activation_spilt 1 2 shortcut_61_activation  shortcut_61_activation_spilt_0 shortcut_61_activation_spilt_1
+Convolution      conv_62 1 1 shortcut_61_activation_spilt_0 conv_62 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_62_batch_norm 1 1   conv_62   conv_62_batch_norm 0=256 1=0.00001
+ReLU             conv_62_activation 1 1 conv_62_batch_norm conv_62_activation 0=0.1
+ConvolutionDepthWise conv_63 1 1 conv_62_activation conv_63 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_63_batch_norm 1 1   conv_63   conv_63_batch_norm 0=256 1=0.00001
+ReLU             conv_63_activation 1 1 conv_63_batch_norm conv_63_activation 0=0.1
+Convolution      conv_64 1 1 conv_63_activation conv_64 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_64_batch_norm 1 1   conv_64   conv_64_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_64_activation 1 1 conv_64_batch_norm conv_64_activation 0=3
+DarknetShortcut  shortcut_65 2 1 shortcut_61_activation_spilt_1 conv_64_activation shortcut_65 0=1.000000 1=1.000000
+ReLU             shortcut_65_activation 1 1 shortcut_65 shortcut_65_activation 0=0.1
+Split            shortcut_65_activation_spilt 1 2 shortcut_65_activation  shortcut_65_activation_spilt_0 shortcut_65_activation_spilt_1
+Convolution      conv_66 1 1 shortcut_65_activation_spilt_0 conv_66 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_66_batch_norm 1 1   conv_66   conv_66_batch_norm 0=256 1=0.00001
+ReLU             conv_66_activation 1 1 conv_66_batch_norm conv_66_activation 0=0.1
+ConvolutionDepthWise conv_67 1 1 conv_66_activation conv_67 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_67_batch_norm 1 1   conv_67   conv_67_batch_norm 0=256 1=0.00001
+ReLU             conv_67_activation 1 1 conv_67_batch_norm conv_67_activation 0=0.1
+Convolution      conv_68 1 1 conv_67_activation conv_68 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_68_batch_norm 1 1   conv_68   conv_68_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_68_activation 1 1 conv_68_batch_norm conv_68_activation 0=3
+DarknetShortcut  shortcut_69 2 1 shortcut_65_activation_spilt_1 conv_68_activation shortcut_69 0=1.000000 1=1.000000
+ReLU             shortcut_69_activation 1 1 shortcut_69 shortcut_69_activation 0=0.1
+Split            shortcut_69_activation_spilt 1 2 shortcut_69_activation  shortcut_69_activation_spilt_0 shortcut_69_activation_spilt_1
+Convolution      conv_70 1 1 shortcut_69_activation_spilt_0 conv_70 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_70_batch_norm 1 1   conv_70   conv_70_batch_norm 0=256 1=0.00001
+ReLU             conv_70_activation 1 1 conv_70_batch_norm conv_70_activation 0=0.1
+ConvolutionDepthWise conv_71 1 1 conv_70_activation conv_71 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_71_batch_norm 1 1   conv_71   conv_71_batch_norm 0=256 1=0.00001
+ReLU             conv_71_activation 1 1 conv_71_batch_norm conv_71_activation 0=0.1
+Convolution      conv_72 1 1 conv_71_activation conv_72 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_72_batch_norm 1 1   conv_72   conv_72_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_72_activation 1 1 conv_72_batch_norm conv_72_activation 0=3
+DarknetShortcut  shortcut_73 2 1 shortcut_69_activation_spilt_1 conv_72_activation shortcut_73 0=1.000000 1=1.000000
+ReLU             shortcut_73_activation 1 1 shortcut_73 shortcut_73_activation 0=0.1
+Split            shortcut_73_activation_spilt 1 2 shortcut_73_activation  shortcut_73_activation_spilt_0 shortcut_73_activation_spilt_1
+Convolution      conv_74 1 1 shortcut_73_activation_spilt_0 conv_74 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_74_batch_norm 1 1   conv_74   conv_74_batch_norm 0=256 1=0.00001
+ReLU             conv_74_activation 1 1 conv_74_batch_norm conv_74_activation 0=0.1
+ConvolutionDepthWise conv_75 1 1 conv_74_activation conv_75 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_75_batch_norm 1 1   conv_75   conv_75_batch_norm 0=256 1=0.00001
+ReLU             conv_75_activation 1 1 conv_75_batch_norm conv_75_activation 0=0.1
+Convolution      conv_76 1 1 conv_75_activation conv_76 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_76_batch_norm 1 1   conv_76   conv_76_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_76_activation 1 1 conv_76_batch_norm conv_76_activation 0=3
+DarknetShortcut  shortcut_77 2 1 shortcut_73_activation_spilt_1 conv_76_activation shortcut_77 0=1.000000 1=1.000000
+ReLU             shortcut_77_activation 1 1 shortcut_77 shortcut_77_activation 0=0.1
+Split            shortcut_77_activation_spilt 1 2 shortcut_77_activation  shortcut_77_activation_spilt_0 shortcut_77_activation_spilt_1
+Convolution      conv_78 1 1 shortcut_77_activation_spilt_0 conv_78 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_78_batch_norm 1 1   conv_78   conv_78_batch_norm 0=256 1=0.00001
+ReLU             conv_78_activation 1 1 conv_78_batch_norm conv_78_activation 0=0.1
+ConvolutionDepthWise conv_79 1 1 conv_78_activation conv_79 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_79_batch_norm 1 1   conv_79   conv_79_batch_norm 0=256 1=0.00001
+ReLU             conv_79_activation 1 1 conv_79_batch_norm conv_79_activation 0=0.1
+Convolution      conv_80 1 1 conv_79_activation conv_80 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_80_batch_norm 1 1   conv_80   conv_80_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_80_activation 1 1 conv_80_batch_norm conv_80_activation 0=3
+DarknetShortcut  shortcut_81 2 1 shortcut_77_activation_spilt_1 conv_80_activation shortcut_81 0=1.000000 1=1.000000
+ReLU             shortcut_81_activation 1 1 shortcut_81 shortcut_81_activation 0=0.1
+Split            shortcut_81_activation_spilt 1 2 shortcut_81_activation  shortcut_81_activation_spilt_0 shortcut_81_activation_spilt_1
+Convolution      conv_82 1 1 shortcut_81_activation_spilt_0 conv_82 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_82_batch_norm 1 1   conv_82   conv_82_batch_norm 0=256 1=0.00001
+ReLU             conv_82_activation 1 1 conv_82_batch_norm conv_82_activation 0=0.1
+ConvolutionDepthWise conv_83 1 1 conv_82_activation conv_83 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_83_batch_norm 1 1   conv_83   conv_83_batch_norm 0=256 1=0.00001
+ReLU             conv_83_activation 1 1 conv_83_batch_norm conv_83_activation 0=0.1
+Convolution      conv_84 1 1 conv_83_activation conv_84 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_84_batch_norm 1 1   conv_84   conv_84_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_84_activation 1 1 conv_84_batch_norm conv_84_activation 0=3
+DarknetShortcut  shortcut_85 2 1 shortcut_81_activation_spilt_1 conv_84_activation shortcut_85 0=1.000000 1=1.000000
+ReLU             shortcut_85_activation 1 1 shortcut_85 shortcut_85_activation 0=0.1
+Split            shortcut_85_activation_spilt 1 2 shortcut_85_activation  shortcut_85_activation_spilt_0 shortcut_85_activation_spilt_1
+Convolution      conv_86 1 1 shortcut_85_activation_spilt_0 conv_86 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_86_batch_norm 1 1   conv_86   conv_86_batch_norm 0=256 1=0.00001
+ReLU             conv_86_activation 1 1 conv_86_batch_norm conv_86_activation 0=0.1
+ConvolutionDepthWise conv_87 1 1 conv_86_activation conv_87 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_87_batch_norm 1 1   conv_87   conv_87_batch_norm 0=256 1=0.00001
+ReLU             conv_87_activation 1 1 conv_87_batch_norm conv_87_activation 0=0.1
+Convolution      conv_88 1 1 conv_87_activation conv_88 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_88_batch_norm 1 1   conv_88   conv_88_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_88_activation 1 1 conv_88_batch_norm conv_88_activation 0=3
+DarknetShortcut  shortcut_89 2 1 shortcut_85_activation_spilt_1 conv_88_activation shortcut_89 0=1.000000 1=1.000000
+ReLU             shortcut_89_activation 1 1 shortcut_89 shortcut_89_activation 0=0.1
+Split            shortcut_89_activation_spilt 1 2 shortcut_89_activation  shortcut_89_activation_spilt_0 shortcut_89_activation_spilt_1
+Convolution      conv_90 1 1 shortcut_89_activation_spilt_0 conv_90 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_90_batch_norm 1 1   conv_90   conv_90_batch_norm 0=256 1=0.00001
+ReLU             conv_90_activation 1 1 conv_90_batch_norm conv_90_activation 0=0.1
+ConvolutionDepthWise conv_91 1 1 conv_90_activation conv_91 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_91_batch_norm 1 1   conv_91   conv_91_batch_norm 0=256 1=0.00001
+ReLU             conv_91_activation 1 1 conv_91_batch_norm conv_91_activation 0=0.1
+Convolution      conv_92 1 1 conv_91_activation conv_92 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_92_batch_norm 1 1   conv_92   conv_92_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_92_activation 1 1 conv_92_batch_norm conv_92_activation 0=3
+DarknetShortcut  shortcut_93 2 1 shortcut_89_activation_spilt_1 conv_92_activation shortcut_93 0=1.000000 1=1.000000
+ReLU             shortcut_93_activation 1 1 shortcut_93 shortcut_93_activation 0=0.1
+Split            shortcut_93_activation_spilt 1 2 shortcut_93_activation  shortcut_93_activation_spilt_0 shortcut_93_activation_spilt_1
+Convolution      conv_94 1 1 shortcut_93_activation_spilt_0 conv_94 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_94_batch_norm 1 1   conv_94   conv_94_batch_norm 0=256 1=0.00001
+ReLU             conv_94_activation 1 1 conv_94_batch_norm conv_94_activation 0=0.1
+ConvolutionDepthWise conv_95 1 1 conv_94_activation conv_95 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_95_batch_norm 1 1   conv_95   conv_95_batch_norm 0=256 1=0.00001
+ReLU             conv_95_activation 1 1 conv_95_batch_norm conv_95_activation 0=0.1
+Convolution      conv_96 1 1 conv_95_activation conv_96 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_96_batch_norm 1 1   conv_96   conv_96_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_96_activation 1 1 conv_96_batch_norm conv_96_activation 0=3
+DarknetShortcut  shortcut_97 2 1 shortcut_93_activation_spilt_1 conv_96_activation shortcut_97 0=1.000000 1=1.000000
+ReLU             shortcut_97_activation 1 1 shortcut_97 shortcut_97_activation 0=0.1
+Split            shortcut_97_activation_spilt 1 2 shortcut_97_activation  shortcut_97_activation_spilt_0 shortcut_97_activation_spilt_1
+Convolution      conv_98 1 1 shortcut_97_activation_spilt_0 conv_98 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_98_batch_norm 1 1   conv_98   conv_98_batch_norm 0=256 1=0.00001
+ReLU             conv_98_activation 1 1 conv_98_batch_norm conv_98_activation 0=0.1
+ConvolutionDepthWise conv_99 1 1 conv_98_activation conv_99 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_99_batch_norm 1 1   conv_99   conv_99_batch_norm 0=256 1=0.00001
+ReLU             conv_99_activation 1 1 conv_99_batch_norm conv_99_activation 0=0.1
+Convolution      conv_100 1 1 conv_99_activation conv_100 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_100_batch_norm 1 1   conv_100   conv_100_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_100_activation 1 1 conv_100_batch_norm conv_100_activation 0=3
+DarknetShortcut  shortcut_101 2 1 shortcut_97_activation_spilt_1 conv_100_activation shortcut_101 0=1.000000 1=1.000000
+ReLU             shortcut_101_activation 1 1 shortcut_101 shortcut_101_activation 0=0.1
+Split            shortcut_101_activation_spilt 1 2 shortcut_101_activation  shortcut_101_activation_spilt_0 shortcut_101_activation_spilt_1
+Convolution      conv_102 1 1 shortcut_101_activation_spilt_0 conv_102 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_102_batch_norm 1 1   conv_102   conv_102_batch_norm 0=256 1=0.00001
+ReLU             conv_102_activation 1 1 conv_102_batch_norm conv_102_activation 0=0.1
+ConvolutionDepthWise conv_103 1 1 conv_102_activation conv_103 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_103_batch_norm 1 1   conv_103   conv_103_batch_norm 0=256 1=0.00001
+ReLU             conv_103_activation 1 1 conv_103_batch_norm conv_103_activation 0=0.1
+Convolution      conv_104 1 1 conv_103_activation conv_104 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_104_batch_norm 1 1   conv_104   conv_104_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_104_activation 1 1 conv_104_batch_norm conv_104_activation 0=3
+DarknetShortcut  shortcut_105 2 1 shortcut_101_activation_spilt_1 conv_104_activation shortcut_105 0=1.000000 1=1.000000
+ReLU             shortcut_105_activation 1 1 shortcut_105 shortcut_105_activation 0=0.1
+Split            shortcut_105_activation_spilt 1 2 shortcut_105_activation  shortcut_105_activation_spilt_0 shortcut_105_activation_spilt_1
+Convolution      conv_106 1 1 shortcut_105_activation_spilt_0 conv_106 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_106_batch_norm 1 1   conv_106   conv_106_batch_norm 0=256 1=0.00001
+ReLU             conv_106_activation 1 1 conv_106_batch_norm conv_106_activation 0=0.1
+ConvolutionDepthWise conv_107 1 1 conv_106_activation conv_107 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_107_batch_norm 1 1   conv_107   conv_107_batch_norm 0=256 1=0.00001
+ReLU             conv_107_activation 1 1 conv_107_batch_norm conv_107_activation 0=0.1
+Convolution      conv_108 1 1 conv_107_activation conv_108 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_108_batch_norm 1 1   conv_108   conv_108_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_108_activation 1 1 conv_108_batch_norm conv_108_activation 0=3
+DarknetShortcut  shortcut_109 2 1 shortcut_105_activation_spilt_1 conv_108_activation shortcut_109 0=1.000000 1=1.000000
+ReLU             shortcut_109_activation 1 1 shortcut_109 shortcut_109_activation 0=0.1
+Split            shortcut_109_activation_spilt 1 2 shortcut_109_activation  shortcut_109_activation_spilt_0 shortcut_109_activation_spilt_1
+Convolution      conv_110 1 1 shortcut_109_activation_spilt_0 conv_110 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_110_batch_norm 1 1   conv_110   conv_110_batch_norm 0=256 1=0.00001
+ReLU             conv_110_activation 1 1 conv_110_batch_norm conv_110_activation 0=0.1
+ConvolutionDepthWise conv_111 1 1 conv_110_activation conv_111 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_111_batch_norm 1 1   conv_111   conv_111_batch_norm 0=256 1=0.00001
+ReLU             conv_111_activation 1 1 conv_111_batch_norm conv_111_activation 0=0.1
+Convolution      conv_112 1 1 conv_111_activation conv_112 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_112_batch_norm 1 1   conv_112   conv_112_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_112_activation 1 1 conv_112_batch_norm conv_112_activation 0=3
+DarknetShortcut  shortcut_113 2 1 shortcut_109_activation_spilt_1 conv_112_activation shortcut_113 0=1.000000 1=1.000000
+ReLU             shortcut_113_activation 1 1 shortcut_113 shortcut_113_activation 0=0.1
+Split            shortcut_113_activation_spilt 1 2 shortcut_113_activation  shortcut_113_activation_spilt_0 shortcut_113_activation_spilt_1
+Convolution      conv_114 1 1 shortcut_113_activation_spilt_0 conv_114 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_114_batch_norm 1 1   conv_114   conv_114_batch_norm 0=256 1=0.00001
+ReLU             conv_114_activation 1 1 conv_114_batch_norm conv_114_activation 0=0.1
+ConvolutionDepthWise conv_115 1 1 conv_114_activation conv_115 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_115_batch_norm 1 1   conv_115   conv_115_batch_norm 0=256 1=0.00001
+ReLU             conv_115_activation 1 1 conv_115_batch_norm conv_115_activation 0=0.1
+Convolution      conv_116 1 1 conv_115_activation conv_116 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_116_batch_norm 1 1   conv_116   conv_116_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_116_activation 1 1 conv_116_batch_norm conv_116_activation 0=3
+DarknetShortcut  shortcut_117 2 1 shortcut_113_activation_spilt_1 conv_116_activation shortcut_117 0=1.000000 1=1.000000
+ReLU             shortcut_117_activation 1 1 shortcut_117 shortcut_117_activation 0=0.1
+Split            shortcut_117_activation_spilt 1 2 shortcut_117_activation  shortcut_117_activation_spilt_0 shortcut_117_activation_spilt_1
+Convolution      conv_118 1 1 shortcut_117_activation_spilt_0 conv_118 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_118_batch_norm 1 1   conv_118   conv_118_batch_norm 0=256 1=0.00001
+ReLU             conv_118_activation 1 1 conv_118_batch_norm conv_118_activation 0=0.1
+ConvolutionDepthWise conv_119 1 1 conv_118_activation conv_119 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_119_batch_norm 1 1   conv_119   conv_119_batch_norm 0=256 1=0.00001
+ReLU             conv_119_activation 1 1 conv_119_batch_norm conv_119_activation 0=0.1
+Convolution      conv_120 1 1 conv_119_activation conv_120 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_120_batch_norm 1 1   conv_120   conv_120_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_120_activation 1 1 conv_120_batch_norm conv_120_activation 0=3
+DarknetShortcut  shortcut_121 2 1 shortcut_117_activation_spilt_1 conv_120_activation shortcut_121 0=1.000000 1=1.000000
+ReLU             shortcut_121_activation 1 1 shortcut_121 shortcut_121_activation 0=0.1
+Split            shortcut_121_activation_spilt 1 2 shortcut_121_activation  shortcut_121_activation_spilt_0 shortcut_121_activation_spilt_1
+Convolution      conv_122 1 1 shortcut_121_activation_spilt_0 conv_122 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_122_batch_norm 1 1   conv_122   conv_122_batch_norm 0=256 1=0.00001
+ReLU             conv_122_activation 1 1 conv_122_batch_norm conv_122_activation 0=0.1
+ConvolutionDepthWise conv_123 1 1 conv_122_activation conv_123 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_123_batch_norm 1 1   conv_123   conv_123_batch_norm 0=256 1=0.00001
+ReLU             conv_123_activation 1 1 conv_123_batch_norm conv_123_activation 0=0.1
+Convolution      conv_124 1 1 conv_123_activation conv_124 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_124_batch_norm 1 1   conv_124   conv_124_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_124_activation 1 1 conv_124_batch_norm conv_124_activation 0=3
+DarknetShortcut  shortcut_125 2 1 shortcut_121_activation_spilt_1 conv_124_activation shortcut_125 0=1.000000 1=1.000000
+ReLU             shortcut_125_activation 1 1 shortcut_125 shortcut_125_activation 0=0.1
+Split            shortcut_125_activation_spilt 1 2 shortcut_125_activation  shortcut_125_activation_spilt_0 shortcut_125_activation_spilt_1
+Convolution      conv_126 1 1 shortcut_125_activation_spilt_0 conv_126 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_126_batch_norm 1 1   conv_126   conv_126_batch_norm 0=256 1=0.00001
+ReLU             conv_126_activation 1 1 conv_126_batch_norm conv_126_activation 0=0.1
+ConvolutionDepthWise conv_127 1 1 conv_126_activation conv_127 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_127_batch_norm 1 1   conv_127   conv_127_batch_norm 0=256 1=0.00001
+ReLU             conv_127_activation 1 1 conv_127_batch_norm conv_127_activation 0=0.1
+Convolution      conv_128 1 1 conv_127_activation conv_128 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_128_batch_norm 1 1   conv_128   conv_128_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_128_activation 1 1 conv_128_batch_norm conv_128_activation 0=3
+DarknetShortcut  shortcut_129 2 1 shortcut_125_activation_spilt_1 conv_128_activation shortcut_129 0=1.000000 1=1.000000
+ReLU             shortcut_129_activation 1 1 shortcut_129 shortcut_129_activation 0=0.1
+Split            shortcut_129_activation_spilt 1 2 shortcut_129_activation  shortcut_129_activation_spilt_0 shortcut_129_activation_spilt_1
+Convolution      conv_130 1 1 shortcut_129_activation_spilt_0 conv_130 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_130_batch_norm 1 1   conv_130   conv_130_batch_norm 0=256 1=0.00001
+ReLU             conv_130_activation 1 1 conv_130_batch_norm conv_130_activation 0=0.1
+ConvolutionDepthWise conv_131 1 1 conv_130_activation conv_131 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_131_batch_norm 1 1   conv_131   conv_131_batch_norm 0=256 1=0.00001
+ReLU             conv_131_activation 1 1 conv_131_batch_norm conv_131_activation 0=0.1
+Convolution      conv_132 1 1 conv_131_activation conv_132 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_132_batch_norm 1 1   conv_132   conv_132_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_132_activation 1 1 conv_132_batch_norm conv_132_activation 0=3
+DarknetShortcut  shortcut_133 2 1 shortcut_129_activation_spilt_1 conv_132_activation shortcut_133 0=1.000000 1=1.000000
+ReLU             shortcut_133_activation 1 1 shortcut_133 shortcut_133_activation 0=0.1
+Split            shortcut_133_activation_spilt 1 2 shortcut_133_activation  shortcut_133_activation_spilt_0 shortcut_133_activation_spilt_1
+Convolution      conv_134 1 1 shortcut_133_activation_spilt_0 conv_134 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_134_batch_norm 1 1   conv_134   conv_134_batch_norm 0=256 1=0.00001
+ReLU             conv_134_activation 1 1 conv_134_batch_norm conv_134_activation 0=0.1
+ConvolutionDepthWise conv_135 1 1 conv_134_activation conv_135 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_135_batch_norm 1 1   conv_135   conv_135_batch_norm 0=256 1=0.00001
+ReLU             conv_135_activation 1 1 conv_135_batch_norm conv_135_activation 0=0.1
+Convolution      conv_136 1 1 conv_135_activation conv_136 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_136_batch_norm 1 1   conv_136   conv_136_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_136_activation 1 1 conv_136_batch_norm conv_136_activation 0=3
+DarknetShortcut  shortcut_137 2 1 shortcut_133_activation_spilt_1 conv_136_activation shortcut_137 0=1.000000 1=1.000000
+ReLU             shortcut_137_activation 1 1 shortcut_137 shortcut_137_activation 0=0.1
+Split            shortcut_137_activation_spilt 1 2 shortcut_137_activation  shortcut_137_activation_spilt_0 shortcut_137_activation_spilt_1
+Convolution      conv_138 1 1 shortcut_137_activation_spilt_0 conv_138 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_138_batch_norm 1 1   conv_138   conv_138_batch_norm 0=256 1=0.00001
+ReLU             conv_138_activation 1 1 conv_138_batch_norm conv_138_activation 0=0.1
+ConvolutionDepthWise conv_139 1 1 conv_138_activation conv_139 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_139_batch_norm 1 1   conv_139   conv_139_batch_norm 0=256 1=0.00001
+ReLU             conv_139_activation 1 1 conv_139_batch_norm conv_139_activation 0=0.1
+Convolution      conv_140 1 1 conv_139_activation conv_140 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_140_batch_norm 1 1   conv_140   conv_140_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_140_activation 1 1 conv_140_batch_norm conv_140_activation 0=3
+DarknetShortcut  shortcut_141 2 1 shortcut_137_activation_spilt_1 conv_140_activation shortcut_141 0=1.000000 1=1.000000
+ReLU             shortcut_141_activation 1 1 shortcut_141 shortcut_141_activation 0=0.1
+Split            shortcut_141_activation_spilt 1 2 shortcut_141_activation  shortcut_141_activation_spilt_0 shortcut_141_activation_spilt_1
+Convolution      conv_142 1 1 shortcut_141_activation_spilt_0 conv_142 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_142_batch_norm 1 1   conv_142   conv_142_batch_norm 0=256 1=0.00001
+ReLU             conv_142_activation 1 1 conv_142_batch_norm conv_142_activation 0=0.1
+ConvolutionDepthWise conv_143 1 1 conv_142_activation conv_143 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_143_batch_norm 1 1   conv_143   conv_143_batch_norm 0=256 1=0.00001
+ReLU             conv_143_activation 1 1 conv_143_batch_norm conv_143_activation 0=0.1
+Convolution      conv_144 1 1 conv_143_activation conv_144 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_144_batch_norm 1 1   conv_144   conv_144_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_144_activation 1 1 conv_144_batch_norm conv_144_activation 0=3
+DarknetShortcut  shortcut_145 2 1 shortcut_141_activation_spilt_1 conv_144_activation shortcut_145 0=1.000000 1=1.000000
+ReLU             shortcut_145_activation 1 1 shortcut_145 shortcut_145_activation 0=0.1
+Split            shortcut_145_activation_spilt 1 2 shortcut_145_activation  shortcut_145_activation_spilt_0 shortcut_145_activation_spilt_1
+Convolution      conv_146 1 1 shortcut_145_activation_spilt_0 conv_146 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_146_batch_norm 1 1   conv_146   conv_146_batch_norm 0=256 1=0.00001
+ReLU             conv_146_activation 1 1 conv_146_batch_norm conv_146_activation 0=0.1
+ConvolutionDepthWise conv_147 1 1 conv_146_activation conv_147 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_147_batch_norm 1 1   conv_147   conv_147_batch_norm 0=256 1=0.00001
+ReLU             conv_147_activation 1 1 conv_147_batch_norm conv_147_activation 0=0.1
+Convolution      conv_148 1 1 conv_147_activation conv_148 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_148_batch_norm 1 1   conv_148   conv_148_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_148_activation 1 1 conv_148_batch_norm conv_148_activation 0=3
+DarknetShortcut  shortcut_149 2 1 shortcut_145_activation_spilt_1 conv_148_activation shortcut_149 0=1.000000 1=1.000000
+ReLU             shortcut_149_activation 1 1 shortcut_149 shortcut_149_activation 0=0.1
+Split            shortcut_149_activation_spilt 1 2 shortcut_149_activation  shortcut_149_activation_spilt_0 shortcut_149_activation_spilt_1
+Convolution      conv_150 1 1 shortcut_149_activation_spilt_0 conv_150 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_150_batch_norm 1 1   conv_150   conv_150_batch_norm 0=256 1=0.00001
+ReLU             conv_150_activation 1 1 conv_150_batch_norm conv_150_activation 0=0.1
+ConvolutionDepthWise conv_151 1 1 conv_150_activation conv_151 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_151_batch_norm 1 1   conv_151   conv_151_batch_norm 0=256 1=0.00001
+ReLU             conv_151_activation 1 1 conv_151_batch_norm conv_151_activation 0=0.1
+Convolution      conv_152 1 1 conv_151_activation conv_152 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_152_batch_norm 1 1   conv_152   conv_152_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_152_activation 1 1 conv_152_batch_norm conv_152_activation 0=3
+DarknetShortcut  shortcut_153 2 1 shortcut_149_activation_spilt_1 conv_152_activation shortcut_153 0=1.000000 1=1.000000
+ReLU             shortcut_153_activation 1 1 shortcut_153 shortcut_153_activation 0=0.1
+Split            shortcut_153_activation_spilt 1 2 shortcut_153_activation  shortcut_153_activation_spilt_0 shortcut_153_activation_spilt_1
+Convolution      conv_154 1 1 shortcut_153_activation_spilt_0 conv_154 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_154_batch_norm 1 1   conv_154   conv_154_batch_norm 0=256 1=0.00001
+ReLU             conv_154_activation 1 1 conv_154_batch_norm conv_154_activation 0=0.1
+ConvolutionDepthWise conv_155 1 1 conv_154_activation conv_155 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_155_batch_norm 1 1   conv_155   conv_155_batch_norm 0=256 1=0.00001
+ReLU             conv_155_activation 1 1 conv_155_batch_norm conv_155_activation 0=0.1
+Convolution      conv_156 1 1 conv_155_activation conv_156 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_156_batch_norm 1 1   conv_156   conv_156_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_156_activation 1 1 conv_156_batch_norm conv_156_activation 0=3
+DarknetShortcut  shortcut_157 2 1 shortcut_153_activation_spilt_1 conv_156_activation shortcut_157 0=1.000000 1=1.000000
+ReLU             shortcut_157_activation 1 1 shortcut_157 shortcut_157_activation 0=0.1
+Split            shortcut_157_activation_spilt 1 2 shortcut_157_activation  shortcut_157_activation_spilt_0 shortcut_157_activation_spilt_1
+Convolution      conv_158 1 1 shortcut_157_activation_spilt_0 conv_158 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_158_batch_norm 1 1   conv_158   conv_158_batch_norm 0=256 1=0.00001
+ReLU             conv_158_activation 1 1 conv_158_batch_norm conv_158_activation 0=0.1
+ConvolutionDepthWise conv_159 1 1 conv_158_activation conv_159 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_159_batch_norm 1 1   conv_159   conv_159_batch_norm 0=256 1=0.00001
+ReLU             conv_159_activation 1 1 conv_159_batch_norm conv_159_activation 0=0.1
+Convolution      conv_160 1 1 conv_159_activation conv_160 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_160_batch_norm 1 1   conv_160   conv_160_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_160_activation 1 1 conv_160_batch_norm conv_160_activation 0=3
+DarknetShortcut  shortcut_161 2 1 shortcut_157_activation_spilt_1 conv_160_activation shortcut_161 0=1.000000 1=1.000000
+ReLU             shortcut_161_activation 1 1 shortcut_161 shortcut_161_activation 0=0.1
+Split            shortcut_161_activation_spilt 1 2 shortcut_161_activation  shortcut_161_activation_spilt_0 shortcut_161_activation_spilt_1
+Convolution      conv_162 1 1 shortcut_161_activation_spilt_0 conv_162 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_162_batch_norm 1 1   conv_162   conv_162_batch_norm 0=256 1=0.00001
+ReLU             conv_162_activation 1 1 conv_162_batch_norm conv_162_activation 0=0.1
+ConvolutionDepthWise conv_163 1 1 conv_162_activation conv_163 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_163_batch_norm 1 1   conv_163   conv_163_batch_norm 0=256 1=0.00001
+ReLU             conv_163_activation 1 1 conv_163_batch_norm conv_163_activation 0=0.1
+Convolution      conv_164 1 1 conv_163_activation conv_164 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_164_batch_norm 1 1   conv_164   conv_164_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_164_activation 1 1 conv_164_batch_norm conv_164_activation 0=3
+DarknetShortcut  shortcut_165 2 1 shortcut_161_activation_spilt_1 conv_164_activation shortcut_165 0=1.000000 1=1.000000
+ReLU             shortcut_165_activation 1 1 shortcut_165 shortcut_165_activation 0=0.1
+Split            shortcut_165_activation_spilt 1 2 shortcut_165_activation  shortcut_165_activation_spilt_0 shortcut_165_activation_spilt_1
+Convolution      conv_166 1 1 shortcut_165_activation_spilt_0 conv_166 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_166_batch_norm 1 1   conv_166   conv_166_batch_norm 0=256 1=0.00001
+ReLU             conv_166_activation 1 1 conv_166_batch_norm conv_166_activation 0=0.1
+ConvolutionDepthWise conv_167 1 1 conv_166_activation conv_167 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_167_batch_norm 1 1   conv_167   conv_167_batch_norm 0=256 1=0.00001
+ReLU             conv_167_activation 1 1 conv_167_batch_norm conv_167_activation 0=0.1
+Convolution      conv_168 1 1 conv_167_activation conv_168 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_168_batch_norm 1 1   conv_168   conv_168_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_168_activation 1 1 conv_168_batch_norm conv_168_activation 0=3
+DarknetShortcut  shortcut_169 2 1 shortcut_165_activation_spilt_1 conv_168_activation shortcut_169 0=1.000000 1=1.000000
+ReLU             shortcut_169_activation 1 1 shortcut_169 shortcut_169_activation 0=0.1
+Split            shortcut_169_activation_spilt 1 2 shortcut_169_activation  shortcut_169_activation_spilt_0 shortcut_169_activation_spilt_1
+Convolution      conv_170 1 1 shortcut_169_activation_spilt_0 conv_170 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_170_batch_norm 1 1   conv_170   conv_170_batch_norm 0=256 1=0.00001
+ReLU             conv_170_activation 1 1 conv_170_batch_norm conv_170_activation 0=0.1
+ConvolutionDepthWise conv_171 1 1 conv_170_activation conv_171 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_171_batch_norm 1 1   conv_171   conv_171_batch_norm 0=256 1=0.00001
+ReLU             conv_171_activation 1 1 conv_171_batch_norm conv_171_activation 0=0.1
+Convolution      conv_172 1 1 conv_171_activation conv_172 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_172_batch_norm 1 1   conv_172   conv_172_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_172_activation 1 1 conv_172_batch_norm conv_172_activation 0=3
+DarknetShortcut  shortcut_173 2 1 shortcut_169_activation_spilt_1 conv_172_activation shortcut_173 0=1.000000 1=1.000000
+ReLU             shortcut_173_activation 1 1 shortcut_173 shortcut_173_activation 0=0.1
+Split            shortcut_173_activation_spilt 1 2 shortcut_173_activation  shortcut_173_activation_spilt_0 shortcut_173_activation_spilt_1
+Convolution      conv_174 1 1 shortcut_173_activation_spilt_0 conv_174 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_174_batch_norm 1 1   conv_174   conv_174_batch_norm 0=256 1=0.00001
+ReLU             conv_174_activation 1 1 conv_174_batch_norm conv_174_activation 0=0.1
+ConvolutionDepthWise conv_175 1 1 conv_174_activation conv_175 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_175_batch_norm 1 1   conv_175   conv_175_batch_norm 0=256 1=0.00001
+ReLU             conv_175_activation 1 1 conv_175_batch_norm conv_175_activation 0=0.1
+Convolution      conv_176 1 1 conv_175_activation conv_176 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_176_batch_norm 1 1   conv_176   conv_176_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_176_activation 1 1 conv_176_batch_norm conv_176_activation 0=3
+DarknetShortcut  shortcut_177 2 1 shortcut_173_activation_spilt_1 conv_176_activation shortcut_177 0=1.000000 1=1.000000
+ReLU             shortcut_177_activation 1 1 shortcut_177 shortcut_177_activation 0=0.1
+Split            shortcut_177_activation_spilt 1 2 shortcut_177_activation  shortcut_177_activation_spilt_0 shortcut_177_activation_spilt_1
+Convolution      conv_178 1 1 shortcut_177_activation_spilt_0 conv_178 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_178_batch_norm 1 1   conv_178   conv_178_batch_norm 0=256 1=0.00001
+ReLU             conv_178_activation 1 1 conv_178_batch_norm conv_178_activation 0=0.1
+ConvolutionDepthWise conv_179 1 1 conv_178_activation conv_179 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_179_batch_norm 1 1   conv_179   conv_179_batch_norm 0=256 1=0.00001
+ReLU             conv_179_activation 1 1 conv_179_batch_norm conv_179_activation 0=0.1
+Convolution      conv_180 1 1 conv_179_activation conv_180 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_180_batch_norm 1 1   conv_180   conv_180_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_180_activation 1 1 conv_180_batch_norm conv_180_activation 0=3
+DarknetShortcut  shortcut_181 2 1 shortcut_177_activation_spilt_1 conv_180_activation shortcut_181 0=1.000000 1=1.000000
+ReLU             shortcut_181_activation 1 1 shortcut_181 shortcut_181_activation 0=0.1
+Split            shortcut_181_activation_spilt 1 2 shortcut_181_activation  shortcut_181_activation_spilt_0 shortcut_181_activation_spilt_1
+Convolution      conv_182 1 1 shortcut_181_activation_spilt_0 conv_182 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_182_batch_norm 1 1   conv_182   conv_182_batch_norm 0=256 1=0.00001
+ReLU             conv_182_activation 1 1 conv_182_batch_norm conv_182_activation 0=0.1
+ConvolutionDepthWise conv_183 1 1 conv_182_activation conv_183 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_183_batch_norm 1 1   conv_183   conv_183_batch_norm 0=256 1=0.00001
+ReLU             conv_183_activation 1 1 conv_183_batch_norm conv_183_activation 0=0.1
+Convolution      conv_184 1 1 conv_183_activation conv_184 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_184_batch_norm 1 1   conv_184   conv_184_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_184_activation 1 1 conv_184_batch_norm conv_184_activation 0=3
+DarknetShortcut  shortcut_185 2 1 shortcut_181_activation_spilt_1 conv_184_activation shortcut_185 0=1.000000 1=1.000000
+ReLU             shortcut_185_activation 1 1 shortcut_185 shortcut_185_activation 0=0.1
+Split            shortcut_185_activation_spilt 1 2 shortcut_185_activation  shortcut_185_activation_spilt_0 shortcut_185_activation_spilt_1
+Convolution      conv_186 1 1 shortcut_185_activation_spilt_0 conv_186 0=256 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_186_batch_norm 1 1   conv_186   conv_186_batch_norm 0=256 1=0.00001
+ReLU             conv_186_activation 1 1 conv_186_batch_norm conv_186_activation 0=0.1
+ConvolutionDepthWise conv_187 1 1 conv_186_activation conv_187 0=256 1=3 2=1 3=1 4=1 5=0 6=18432 7=32
+BatchNorm        conv_187_batch_norm 1 1   conv_187   conv_187_batch_norm 0=256 1=0.00001
+ReLU             conv_187_activation 1 1 conv_187_batch_norm conv_187_activation 0=0.1
+Convolution      conv_188 1 1 conv_187_activation conv_188 0=2048 1=1 2=1 3=1 4=0 5=0 6=524288
+BatchNorm        conv_188_batch_norm 1 1   conv_188   conv_188_batch_norm 0=2048 1=0.00001
+DarknetActivation conv_188_activation 1 1 conv_188_batch_norm conv_188_activation 0=3
+DarknetShortcut  shortcut_189 2 1 shortcut_185_activation_spilt_1 conv_188_activation shortcut_189 0=1.000000 1=1.000000
+ReLU             shortcut_189_activation 1 1 shortcut_189 shortcut_189_activation 0=0.1
+Split            shortcut_189_activation_spilt 1 2 shortcut_189_activation  shortcut_189_activation_spilt_0 shortcut_189_activation_spilt_1
+Convolution      conv_190 1 1 shortcut_189_activation_spilt_0 conv_190 0=512 1=1 2=1 3=1 4=0 5=0 6=1048576
+BatchNorm        conv_190_batch_norm 1 1   conv_190   conv_190_batch_norm 0=512 1=0.00001
+ReLU             conv_190_activation 1 1 conv_190_batch_norm conv_190_activation 0=0.1
+ConvolutionDepthWise conv_191 1 1 conv_190_activation conv_191 0=512 1=3 2=1 3=2 4=1 5=0 6=73728 7=32
+BatchNorm        conv_191_batch_norm 1 1   conv_191   conv_191_batch_norm 0=512 1=0.00001
+ReLU             conv_191_activation 1 1 conv_191_batch_norm conv_191_activation 0=0.1
+Convolution      conv_192 1 1 conv_191_activation conv_192 0=4096 1=1 2=1 3=1 4=0 5=0 6=2097152
+BatchNorm        conv_192_batch_norm 1 1   conv_192   conv_192_batch_norm 0=4096 1=0.00001
+DarknetActivation conv_192_activation 1 1 conv_192_batch_norm conv_192_activation 0=3
+DarknetShortcut  shortcut_193 2 1 shortcut_189_activation_spilt_1 conv_192_activation shortcut_193 0=1.000000 1=1.000000
+ReLU             shortcut_193_activation 1 1 shortcut_193 shortcut_193_activation 0=0.1
+Split            shortcut_193_activation_spilt 1 2 shortcut_193_activation  shortcut_193_activation_spilt_0 shortcut_193_activation_spilt_1
+Convolution      conv_194 1 1 shortcut_193_activation_spilt_0 conv_194 0=512 1=1 2=1 3=1 4=0 5=0 6=2097152
+BatchNorm        conv_194_batch_norm 1 1   conv_194   conv_194_batch_norm 0=512 1=0.00001
+ReLU             conv_194_activation 1 1 conv_194_batch_norm conv_194_activation 0=0.1
+ConvolutionDepthWise conv_195 1 1 conv_194_activation conv_195 0=512 1=3 2=1 3=1 4=1 5=0 6=73728 7=32
+BatchNorm        conv_195_batch_norm 1 1   conv_195   conv_195_batch_norm 0=512 1=0.00001
+ReLU             conv_195_activation 1 1 conv_195_batch_norm conv_195_activation 0=0.1
+Convolution      conv_196 1 1 conv_195_activation conv_196 0=4096 1=1 2=1 3=1 4=0 5=0 6=2097152
+BatchNorm        conv_196_batch_norm 1 1   conv_196   conv_196_batch_norm 0=4096 1=0.00001
+DarknetActivation conv_196_activation 1 1 conv_196_batch_norm conv_196_activation 0=3
+DarknetShortcut  shortcut_197 2 1 shortcut_193_activation_spilt_1 conv_196_activation shortcut_197 0=1.000000 1=1.000000
+ReLU             shortcut_197_activation 1 1 shortcut_197 shortcut_197_activation 0=0.1
+Split            shortcut_197_activation_spilt 1 2 shortcut_197_activation  shortcut_197_activation_spilt_0 shortcut_197_activation_spilt_1
+Convolution      conv_198 1 1 shortcut_197_activation_spilt_0 conv_198 0=512 1=1 2=1 3=1 4=0 5=0 6=2097152
+BatchNorm        conv_198_batch_norm 1 1   conv_198   conv_198_batch_norm 0=512 1=0.00001
+ReLU             conv_198_activation 1 1 conv_198_batch_norm conv_198_activation 0=0.1
+ConvolutionDepthWise conv_199 1 1 conv_198_activation conv_199 0=512 1=3 2=1 3=1 4=1 5=0 6=73728 7=32
+BatchNorm        conv_199_batch_norm 1 1   conv_199   conv_199_batch_norm 0=512 1=0.00001
+ReLU             conv_199_activation 1 1 conv_199_batch_norm conv_199_activation 0=0.1
+Convolution      conv_200 1 1 conv_199_activation conv_200 0=4096 1=1 2=1 3=1 4=0 5=0 6=2097152
+BatchNorm        conv_200_batch_norm 1 1   conv_200   conv_200_batch_norm 0=4096 1=0.00001
+DarknetActivation conv_200_activation 1 1 conv_200_batch_norm conv_200_activation 0=3
+DarknetShortcut  shortcut_201 2 1 shortcut_197_activation_spilt_1 conv_200_activation shortcut_201 0=1.000000 1=1.000000
+ReLU             shortcut_201_activation 1 1 shortcut_201 shortcut_201_activation 0=0.1
+Pooling          gloabl_avg_pool_202 1 1 shortcut_201_activation gloabl_avg_pool_202 0=1 4=1
+Convolution      conv_203 1 1 gloabl_avg_pool_202 conv_203 0=1000 1=1 2=1 3=1 4=0 5=1 6=4096000
+DarknetActivation conv_203_activation 1 1 conv_203 conv_203_activation 0=3
+Softmax          softmax_204 1 1 conv_203_activation softmax_204 0=0

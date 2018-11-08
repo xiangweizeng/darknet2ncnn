@@ -1,0 +1,44 @@
+7767517
+42 42
+Input            data 0 1 data 0=256 1=256 2=3
+Crop             crop_0 1 1 data crop_0 0=16 1=16 2=0 3=224 4=224 5=-233
+Convolution      conv_1 1 1 crop_0 conv_1 0=64 1=3 2=1 3=1 4=1 5=1 6=1728
+ReLU             conv_1_activation 1 1 conv_1 conv_1_activation 0=0.0
+Convolution      conv_2 1 1 conv_1_activation conv_2 0=64 1=3 2=1 3=1 4=1 5=1 6=36864
+ReLU             conv_2_activation 1 1 conv_2 conv_2_activation 0=0.0
+Pooling          maxpool_3 1 1 conv_2_activation maxpool_3 0=0 1=2 2=2 3=0 5=1 13=0 14=1 15=1
+Convolution      conv_4 1 1 maxpool_3 conv_4 0=128 1=3 2=1 3=1 4=1 5=1 6=73728
+ReLU             conv_4_activation 1 1 conv_4 conv_4_activation 0=0.0
+Convolution      conv_5 1 1 conv_4_activation conv_5 0=128 1=3 2=1 3=1 4=1 5=1 6=147456
+ReLU             conv_5_activation 1 1 conv_5 conv_5_activation 0=0.0
+Pooling          maxpool_6 1 1 conv_5_activation maxpool_6 0=0 1=2 2=2 3=0 5=1 13=0 14=1 15=1
+Convolution      conv_7 1 1 maxpool_6 conv_7 0=256 1=3 2=1 3=1 4=1 5=1 6=294912
+ReLU             conv_7_activation 1 1 conv_7 conv_7_activation 0=0.0
+Convolution      conv_8 1 1 conv_7_activation conv_8 0=256 1=3 2=1 3=1 4=1 5=1 6=589824
+ReLU             conv_8_activation 1 1 conv_8 conv_8_activation 0=0.0
+Convolution      conv_9 1 1 conv_8_activation conv_9 0=256 1=3 2=1 3=1 4=1 5=1 6=589824
+ReLU             conv_9_activation 1 1 conv_9 conv_9_activation 0=0.0
+Pooling          maxpool_10 1 1 conv_9_activation maxpool_10 0=0 1=2 2=2 3=0 5=1 13=0 14=1 15=1
+Convolution      conv_11 1 1 maxpool_10 conv_11 0=512 1=3 2=1 3=1 4=1 5=1 6=1179648
+ReLU             conv_11_activation 1 1 conv_11 conv_11_activation 0=0.0
+Convolution      conv_12 1 1 conv_11_activation conv_12 0=512 1=3 2=1 3=1 4=1 5=1 6=2359296
+ReLU             conv_12_activation 1 1 conv_12 conv_12_activation 0=0.0
+Convolution      conv_13 1 1 conv_12_activation conv_13 0=512 1=3 2=1 3=1 4=1 5=1 6=2359296
+ReLU             conv_13_activation 1 1 conv_13 conv_13_activation 0=0.0
+Pooling          maxpool_14 1 1 conv_13_activation maxpool_14 0=0 1=2 2=2 3=0 5=1 13=0 14=1 15=1
+Convolution      conv_15 1 1 maxpool_14 conv_15 0=512 1=3 2=1 3=1 4=1 5=1 6=2359296
+ReLU             conv_15_activation 1 1 conv_15 conv_15_activation 0=0.0
+Convolution      conv_16 1 1 conv_15_activation conv_16 0=512 1=3 2=1 3=1 4=1 5=1 6=2359296
+ReLU             conv_16_activation 1 1 conv_16 conv_16_activation 0=0.0
+Convolution      conv_17 1 1 conv_16_activation conv_17 0=512 1=3 2=1 3=1 4=1 5=1 6=2359296
+ReLU             conv_17_activation 1 1 conv_17 conv_17_activation 0=0.0
+Pooling          maxpool_18 1 1 conv_17_activation maxpool_18 0=0 1=2 2=2 3=0 5=1 13=0 14=1 15=1
+InnerProduct     connected_19 1 1 maxpool_18 connected_19 0=4096 1=1 2=102760448
+ReLU             connected_19_activation 1 1 connected_19 connected_19_activation 0=0.0
+Dropout          dropout_20 1 1 connected_19_activation dropout_20
+InnerProduct     connected_21 1 1 dropout_20 connected_21 0=4096 1=1 2=16777216
+ReLU             connected_21_activation 1 1 connected_21 connected_21_activation 0=0.0
+Dropout          dropout_22 1 1 connected_21_activation dropout_22
+InnerProduct     connected_23 1 1 dropout_22 connected_23 0=1000 1=1 2=4096000
+DarknetActivation connected_23_activation 1 1 connected_23 connected_23_activation 0=3
+Softmax          softmax_24 1 1 connected_23_activation softmax_24 0=0
