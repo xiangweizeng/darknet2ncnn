@@ -45,11 +45,88 @@ cd ../../
 make -j8
 ```
 7. Convert and verify
+- Cifar
 ```sh
 # workspace darknet2ncnn
 make cifar
-make tiny-yolov3.net
+./darknet2ncnn data/cifar.cfg  data/cifar.backup example/zoo/cifar.param  example/zoo/cifar.bin 
+layer     filters    size              input                output
+    0 conv    128  3 x 3 / 1    28 x  28 x   3   ->    28 x  28 x 128  0.005 BFLOPs
+    1 conv    128  3 x 3 / 1    28 x  28 x 128   ->    28 x  28 x 128  0.231 BFLOPs
+.
+.
+.
+   13 dropout       p = 0.50               25088  ->  25088
+   14 conv     10  1 x 1 / 1     7 x   7 x 512   ->     7 x   7 x  10  0.001 BFLOPs
+   15 avg                        7 x   7 x  10   ->    10
+   16 softmax                                          10
+Loading weights from data/cifar.backup...Done!
+./convert_verify data/cifar.cfg  data/cifar.backup example/zoo/cifar.param  example/zoo/cifar.bin  example/data/21263_ship.png
+layer     filters    size              input                output
+    0 conv    128  3 x 3 / 1    28 x  28 x   3   ->    28 x  28 x 128  0.005 BFLOPs
+    1 conv    128  3 x 3 / 1    28 x  28 x 128   ->    28 x  28 x 128  0.231 BFLOPs
+.
+.
+.
+   13 dropout       p = 0.50               25088  ->  25088
+   14 conv     10  1 x 1 / 1     7 x   7 x 512   ->     7 x   7 x  10  0.001 BFLOPs
+   15 avg                        7 x   7 x  10   ->    10
+   16 softmax                                          10
+Loading weights from data/cifar.backup...Done!
 
+Start run all operation:
+conv_0 : weights diff : 0.000000
+conv_0_batch_norm : slope diff : 0.000000
+conv_0_batch_norm : mean diff : 0.000000
+conv_0_batch_norm : variance diff : 0.000000
+conv_0_batch_norm : biases diff : 0.000000
+Layer: 0, Blob : conv_0_activation, Total Diff 595.703918 Avg Diff: 0.005936
+.
+.
+.
+Layer: 14, Blob : conv_14_activation, Total Diff 35.058342 Avg Diff: 0.071548
+Layer: 15, Blob : gloabl_avg_pool_15, Total Diff 0.235242 Avg Diff: 0.023524
+Layer: 16, Blob : softmax_16, Total Diff 0.000001 Avg Diff: 0.000000
+
+```
+
+- Yolov3-tiny
+```sh
+ make yolov3-tiny.net 
+./darknet2ncnn data/yolov3-tiny.cfg  data/yolov3-tiny.weights example/zoo/yolov3-tiny.param  example/zoo/yolov3-tiny.bin 
+layer     filters    size              input                output
+    0 conv     16  3 x 3 / 1   416 x 416 x   3   ->   416 x 416 x  16  0.150 BFLOPs
+.
+.
+.
+   22 conv    255  1 x 1 / 1    26 x  26 x 256   ->    26 x  26 x 255  0.088 BFLOPs
+   23 yolo
+Loading weights from data/yolov3-tiny.weights...Done!
+./convert_verify data/yolov3-tiny.cfg  data/yolov3-tiny.weights example/zoo/yolov3-tiny.param  example/zoo/yolov3-tiny.bin example/data/dog.jpg
+layer     filters    size              input                output
+    0 conv     16  3 x 3 / 1   416 x 416 x   3   ->   416 x 416 x  16  0.150 BFLOPs
+    1 max          2 x 2 / 2   416 x 416 x  16   ->   208 x 208 x  16
+.
+.
+.
+   20 route  19 8
+   21 conv    256  3 x 3 / 1    26 x  26 x 384   ->    26 x  26 x 256  1.196 BFLOPs
+   22 conv    255  1 x 1 / 1    26 x  26 x 256   ->    26 x  26 x 255  0.088 BFLOPs
+   23 yolo
+Loading weights from data/yolov3-tiny.weights...Done!
+
+Start run all operation:
+conv_0 : weights diff : 0.000000
+conv_0_batch_norm : slope diff : 0.000000
+conv_0_batch_norm : mean diff : 0.000000
+conv_0_batch_norm : variance diff : 0.000000
+conv_0_batch_norm : biases diff : 0.000000
+.
+.
+.
+conv_22 : weights diff : 0.000000
+conv_22 : biases diff : 0.000000
+Layer: 22, Blob : conv_22_activation, Total Diff 29411.240234 Avg Diff: 0.170619
 ```
 8. Build example
 ```sh
@@ -61,12 +138,40 @@ make -j2
 ```sh
 # workspace example
 make cifar.cifar
+./classifier zoo/cifar.param  zoo/cifar.bin  data/32516_dog.png data/cifar_lable.txt
+4    deer                             = 0.263103
+6    frog                             = 0.224274
+5    dog                              = 0.191360
+3    cat                              = 0.180164
+2    bird                             = 0.094251
 ```
 11. Run Yolo
+
+- Run YoloV3-tiny
 ```sh
 # workspace example
  make yolov3-tiny.coco
+ ./yolo zoo/yolov3-tiny.param  zoo/yolov3-tiny.bin  data/dog.jpg  data/coco.names
+3  [car             ] = 0.64929 at 252.10 92.13 114.88 x 52.98
+2  [bicycle         ] = 0.60786 at 111.18 134.81 201.40 x 160.01
+17 [dog             ] = 0.56338 at 69.91 152.89 130.30 x 179.04
+8  [truck           ] = 0.54883 at 288.70 103.80 47.98 x 34.17
+3  [car             ] = 0.28332 at 274.47 100.36 48.90 x 35.03
 ```
+
+- YoloV3-tiny figure
+
+NCNN:
+
+![image/](image/yolov3-tiny-ncnn.png)
+
+DARKNET:
+
+![image/](image/yolov3-tiny-darknet.jpg)
+
+
+
+
 12. Build benchmark
 ```sh
 # workspace darknet2ncnn
