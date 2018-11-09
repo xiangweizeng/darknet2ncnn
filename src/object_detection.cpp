@@ -94,10 +94,7 @@ void ObjectsManager::do_objects_nms(std::vector<ObjectBox> &objects, float nms, 
             ObjectBoxNmsCondition condition(object_box, nms);
             object_boxs.remove_all_match(condition);
 
-            if (start > 1)
-            {
-                do_object_boxs_table_nms(condition, min_index, start);
-            }
+            do_object_boxs_table_nms(condition, min_index, start);
         } while (!object_boxs.empty());
     }
 }
