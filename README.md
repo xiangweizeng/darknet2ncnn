@@ -280,25 +280,25 @@ Time： ms
 
 Network | i7-7700K 4.20GHz 8thread | IMX6Q,Topeet 4thead | Firefly rk3399 2thread | Firefly rk3399 4thread
 ---------|----------|---------|---------|---------
-cifar | 62 | 433 | 85 | 100
-alexnet | 92 | 1297 | 218 | 420
-darknet | 28 | 458 | 88 | 106
-darknet19 | 202 | 2356 | 333 | 433
-darknet53 | 683 | 7853 | 897 | 1406
-densenet201 |218  | 6592 | 681 | 1218
-extraction | 244 | 2407 | 334 | 428
-resnet18 | 174 | 1563 | 240 | 338
-resnet34 | 311 | 2605 | 402 | 580
-resnet50 | 276 | 5718 | 551 | 925
-resnet101 | 492 | 10450 | 952 | 1642
-resnet152 | 704 | 15093 | 1363 | 2311
-resnext50 | 169 | 8084  | 669  | 1093
-resnext101-32x4d | 296 | 15334 | 1227 | 2281
-resnext152-32x4d | 438 | 22843 | 1795 | 3282
-vgg-16 | 884 | 7512 | 895 | 1300
-yolov1-tiny| 98 | 1283 | 224 | 295
-yolov2-tiny| 155 | 1741 | 252 | 329
+cifar | 62 | 302 | 85 | 100
+alexnet | 92 | 649 | 218 | 420
+darknet | 28 | 297 | 88 | 106
+darknet19 | 202 | 1218 | 333 | 433
+darknet53 | 683 | 3235 | 897 | 1406
+densenet201 |218  | 2647 | 681 | 1218
+extraction | 244 | 1226 | 334 | 428
+resnet18 | 174 | 764 | 240 | 338
+resnet34 | 311 | 1408 | 402 | 580
+resnet50 | 276 | 2092 | 551 | 925
+resnet101 | 492 | 3758 | 952 | 1642
+resnet152 | 704 | 5500 | 1363 | 2311
+resnext50 | 169 | 2595  | 669  | 1093
+resnext101-32x4d | 5274 | 15334 | 1227 | 2281
+resnext152-32x4d | 7818 | 22843 | 1795 | 3282
+vgg-16 | 884 | 3597 | 895 | 1300
+yolov1-tiny| 98 | 843 | 224 | 295
+yolov2-tiny| 155 | 987 | 252 | 329
 yolov2| 1846 | Out of memofy| Out of memofy | Out of memofy
-yolov3-tiny| 159 | 1791 | 245 | 322
+yolov3-tiny| 159 | 951 | 245 | 322
 yolov3| 5198 | Out of memofy| Out of memofy | Out of memofy
 yolov3-spp| 5702 | Out of memofy | Out of memofy | Out of memofy

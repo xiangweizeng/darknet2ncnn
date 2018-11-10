@@ -660,7 +660,7 @@ void parse_avgpool(network net, int layer_index, layer avgpool, FILE *pp,
     input_data = get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
 
-  fprintf(pp, "%-16s gloabl_avg_pool_%d 1 1 %s gloabl_avg_pool_%d 0=1 4=1\n",
+  fprintf(pp, "%-16s global_avg_pool_%d 1 1 %s global_avg_pool_%d 0=1 4=1\n",
           "Pooling", layer_index, input_data.c_str(), layer_index);
 }
 
@@ -702,7 +702,7 @@ void parse_shortcut(network net, int layer_index, layer shortcut, FILE *pp,
     input_data += " " + get_layer_output_blob_name(split_info, layer_index - 1, layer_index);
   }
 
-  // commit, test, some network not wosk
+  // commit, test, some network not work
   /*if (shortcut.c = shortcut.out_c && shortcut.h == shortcut.out_h &&
                    shortcut.w == shortcut.out_w) {
     fprintf(pp, "%-16s shortcut_%d 2 1 %s shortcut_%d 0=1", "Eltwise",
