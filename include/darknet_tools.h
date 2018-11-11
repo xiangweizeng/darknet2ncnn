@@ -105,7 +105,7 @@ static std::string get_layer_output_blob_format(layer l)
   }
   else if (lt == AVGPOOL)
   {
-    return "gloabl_avg_pool_%d";
+    return "global_avg_pool_%d";
   }
   else if (lt == ROUTE)
   {
