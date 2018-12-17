@@ -27,7 +27,7 @@ git submodule update
 ```
 4. build darknet
 ```sh
-cd darknet2
+cd darknet
 make -j8
 rm libdarknet.so
 ```
