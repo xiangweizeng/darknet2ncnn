@@ -100,6 +100,18 @@ public:
         return &(blobs[index]);
     }
 
+    int get_layer_layer_output_blob_index()
+    {
+        int layer_index = layers.size() - 1;
+        if (layer_index < 0)
+        {
+            return -1;
+        }
+
+        int blob_index = layers[layer_index]->tops[0];
+        return blob_index;
+    }
+
     ncnn::Blob *get_last_layer_output_blob()
     {
         int layer_index = layers.size() - 1;
@@ -124,11 +136,10 @@ static ncnn::UnlockedPoolAllocator g_blob_pool_allocator;
 static ncnn::PoolAllocator g_workspace_pool_allocator;
 
 #if NCNN_VULKAN
-static ncnn::VulkanDevice* g_vkdev = 0;
-static ncnn::VkAllocator* g_blob_vkallocator = 0;
-static ncnn::VkAllocator* g_staging_vkallocator = 0;
+static ncnn::VulkanDevice *g_vkdev = 0;
+static ncnn::VkAllocator *g_blob_vkallocator = 0;
+static ncnn::VkAllocator *g_staging_vkallocator = 0;
 #endif // NCNN_VULKAN
-
 
 void network_init(ncnn::BenchNet &net, const char *param)
 {
@@ -287,11 +298,12 @@ int main(int argc, char **argv)
     benchmark("resnext50.param", "resnext50");
     benchmark("resnext101-32x4d.param", "resnext101-32x4d");
     benchmark("resnext152-32x4d.param", "resnext152-32x4d");
-    benchmark("vgg-16.param", "vgg-16");*/
+    benchmark("vgg-16.param", "vgg-16");
     benchmark("yolov1-tiny.param", "yolov1-tiny");
     benchmark("yolov2-tiny.param", "yolov2-tiny");
     //benchmark("yolov2.param", "yolov2");
     benchmark("yolov3-tiny.param", "yolov3-tiny");
+    benchmark("yolov3-tiny-opt.param", "yolov3-tiny-opt");
     //benchmark("yolov3.param", "yolov3");
     //benchmark("yolov3-spp.param", "yolov3-spp");
 

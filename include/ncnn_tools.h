@@ -124,6 +124,15 @@ class CustomizedNet : public ncnn::Net
 public:
   CustomizedNet() : ncnn::Net(){};
 
+  ncnn::Layer *get_layer_from_index(int index)
+  {
+    if (index < 0)
+    {
+      return NULL;
+    }
+    return layers[index];
+  }
+
   ncnn::Layer *get_layer_from_name(const char *layer_name)
   {
     int index = find_layer_index_by_name(layer_name);
@@ -142,6 +151,18 @@ public:
       return NULL;
     }
     return &(blobs[index]);
+  }
+
+  int get_last_layer_output_blob_index()
+  {
+    int layer_index = layers.size() - 1;
+    if (layer_index < 0)
+    {
+      return -1;
+    }
+
+    int blob_index = layers[layer_index]->tops[0];
+    return blob_index;
   }
 
   ncnn::Blob *get_last_layer_output_blob()

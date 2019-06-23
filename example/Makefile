@@ -3,6 +3,7 @@ DEBUG=0
 VPATH=./
 CLASSIFIER=classifier
 YOLO=yolo
+YOLO_PARAM_BIN=yolo-param-bin
 OBJDIR=./obj/
 
 CC=gcc
@@ -24,17 +25,22 @@ COMMON+= `pkg-config --cflags opencv`
 
 CLASSIFIEROBJA=classifier.o
 YOLOOBJA=yolov2.o
+YOLO_PARAM_BIN_OBJA=yolov_param_bin.o
 
 CLASSIFIEROBJ = $(addprefix $(OBJDIR), $(CLASSIFIEROBJA))
 YOLOOBJ = $(addprefix $(OBJDIR), $(YOLOOBJA))
+YOLO_PARAM_BIN_OBJ = $(addprefix $(OBJDIR), $(YOLO_PARAM_BIN_OBJA))
 DEPS = $(wildcard *.h) Makefile
 
-all: obj  $(CLASSIFIER) $(YOLO)
+all: obj  $(CLASSIFIER) $(YOLO) $(YOLO_PARAM_BIN)
 
 $(CLASSIFIER): $(CLASSIFIEROBJ)
 	$(CC)  $^ -o $@ $(LDFLAGS) $(COMMON) $(CFLAGS)
 
 $(YOLO): $(YOLOOBJ)
+	$(CC)  $^ -o $@ $(LDFLAGS) $(COMMON) $(CFLAGS)
+
+$(YOLO_PARAM_BIN): $(YOLO_PARAM_BIN_OBJ)
 	$(CC)  $^ -o $@ $(LDFLAGS) $(COMMON) $(CFLAGS)
 
 $(OBJDIR)%.o: %.cpp $(DEPS)

@@ -204,7 +204,6 @@ int Yolov3Detection::forward(const std::vector<Mat> &bottom_blobs, std::vector<M
         outptr[5] = r.ymax;
     }
 
-    printf("YOLOV3-forwardout\n");
     return 0;
 }
 
