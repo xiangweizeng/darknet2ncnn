@@ -51,8 +51,8 @@ cd ../../
 make -j8
 ```
 7. Convert and verify
-- Cifar
 
+- Cifar
 ```sh
 # workspace darknet2ncnn
 make cifar
@@ -184,9 +184,9 @@ cd benchmark
 make 
 ```
 13. Run benchmark
+
 - Firefly RK3399 thread2
 ```sh
-
 firefly@firefly:~/project/darknet2ncnn/benchmark$ ./benchdarknet 10  2 &
 [1] 4556
 loop_count = 10
@@ -219,7 +219,6 @@ resnext152-32x4d  min = 1788.03  max = 1798.79  avg = 1795.48
 
 - Firefly RK3399 thread4
 ```sh
-
 firefly@firefly:~/project/darknet2ncnn/benchmark$ ./benchdarknet 10  4 &
 [1] 4663 
 loop_count = 10
