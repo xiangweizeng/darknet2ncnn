@@ -4,7 +4,7 @@
  * @Link   : 
  * @Date   : 11/2/2018, 2:50:06 PM
  */
-
+#include <iostream>
 #include "object_detection.h"
 
 namespace ncnn
@@ -49,10 +49,10 @@ ObjectsManager::ObjectsManager(size_t steps) : object_boxs_table()
     step = prob_steps_MAX / steps;
     step = step <= 0 ? 1 : step;
     prob_steps = prob_steps_MAX / step;
+    object_boxs_table.resize(prob_steps);
     for (int i = 0; i < prob_steps; i++)
     {
-        PObjectBoxs pboxs = (new TObjectBoxs(object_compare));
-        object_boxs_table.push_back(pboxs);
+        object_boxs_table[i] = new TObjectBoxs(object_compare);
     }
 }
 

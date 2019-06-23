@@ -85,17 +85,13 @@ static int detect_yolov2(char *param, char *bin, cv::Mat &bgr,
   yolo.load_model(bin);
 
   ncnn::Input *input = (ncnn::Input *)yolo.get_layer_from_name("data");
-  cv::Mat letter = letter_box_image(bgr, input->h, input->w);
-
-  ncnn::Mat in = ncnn::Mat::from_pixels(letter.data, ncnn::Mat::PIXEL_RGB2BGR,
-                                        input->w, input->h);
+  ncnn::Mat in = ncnn::Mat::from_pixels_resize(bgr.data, ncnn::Mat::PIXEL_BGR2RGB, bgr.cols, bgr.rows, input->w, input->h);
   const float norm_vals[3] = {1 / 255.0, 1 / 255.0, 1 / 255.0};
   in.substract_mean_normalize(0, norm_vals);
 
   ncnn::Extractor ex = yolo.create_extractor();
-  ex.input("data", in);
-  ex.set_light_mode(false);
   ex.set_num_threads(2);
+  ex.input("data", in);
 
   ncnn::Mat out;
   ncnn::Blob *out_blob = yolo.get_last_layer_output_blob();
@@ -106,8 +102,8 @@ static int detect_yolov2(char *param, char *bin, cv::Mat &bgr,
     return result;
   }
 
-  int img_h = letter.rows;
-  int img_w = letter.cols;
+  int img_h = bgr.rows;
+  int img_w = bgr.cols;
   std::vector<Object> objects;
   for (int i = 0; i < out.h; i++)
   {
@@ -124,7 +120,7 @@ static int detect_yolov2(char *param, char *bin, cv::Mat &bgr,
     objects.push_back(object);
   }
 
-  draw_objects(letter, objects, labels);
+  draw_objects(bgr, objects, labels);
   return 0;
 }
 

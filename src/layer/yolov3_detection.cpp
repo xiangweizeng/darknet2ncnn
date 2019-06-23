@@ -72,7 +72,7 @@ int Yolov3Detection::forward(const std::vector<Mat> &bottom_blobs, std::vector<M
     // anchor coord + box score + num_class
     if (channels_per_box != 4 + 1 + classes)
         return -1;
-
+        
     ObjectsManager objects(prob_steps * box_num / 20);
 
     #pragma omp parallel for num_threads(opt.num_threads)
@@ -186,7 +186,8 @@ int Yolov3Detection::forward(const std::vector<Mat> &bottom_blobs, std::vector<M
     objects.do_objects_nms(detected_objects, nms_threshold, confidence_threshold);
 
     Mat &top_blob = top_blobs[0];
-    top_blob.create(6, detected_objects.size(), 4u, opt.blob_allocator);
+    top_blob.create(6, (int)detected_objects.size(), 4u, opt.blob_allocator);
+
     if (top_blob.empty())
         return -100;
 
@@ -203,6 +204,7 @@ int Yolov3Detection::forward(const std::vector<Mat> &bottom_blobs, std::vector<M
         outptr[5] = r.ymax;
     }
 
+    printf("YOLOV3-forwardout\n");
     return 0;
 }
 

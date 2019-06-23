@@ -24,6 +24,7 @@ Yolov1Detection::Yolov1Detection()
     softmax = ncnn::create_layer(ncnn::LayerType::Softmax);
     ncnn::ParamDict pd;
     pd.set(0, 1);
+    pd.set(1, 1);
     softmax->load_param(pd);
 }
 
@@ -112,7 +113,7 @@ int Yolov1Detection::forward_inplace(Mat &bottom_top_blob, const Option &opt) co
     std::vector<ObjectBox> detected_objects;
     objects.do_objects_nms(detected_objects, nms_threshold, confidence_threshold);
 
-    bottom_top_blob.create(6, detected_objects.size(), 4u, opt.blob_allocator);
+    bottom_top_blob.create(6, (int)detected_objects.size(), 4u, opt.blob_allocator);
     if (bottom_top_blob.empty())
         return -100;
 

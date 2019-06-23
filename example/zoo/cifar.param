@@ -35,5 +35,5 @@ ReLU             conv_12_activation 1 1 conv_12_batch_norm conv_12_activation 0=
 Dropout          dropout_13 1 1 conv_12_activation dropout_13
 Convolution      conv_14 1 1 dropout_13 conv_14 0=10 1=1 2=1 3=1 4=0 5=1 6=5120
 ReLU             conv_14_activation 1 1 conv_14 conv_14_activation 0=0.1
-Pooling          gloabl_avg_pool_15 1 1 conv_14_activation gloabl_avg_pool_15 0=1 4=1
-Softmax          softmax_16 1 1 gloabl_avg_pool_15 softmax_16 0=0
+Pooling          global_avg_pool_15 1 1 conv_14_activation global_avg_pool_15 0=1 4=1
+Softmax          softmax_16 1 1 global_avg_pool_15 softmax_16 0=0
