@@ -53,6 +53,7 @@ make -j8
 7. Convert and verify
 
 - Cifar
+
 ```sh
 # workspace darknet2ncnn
 make cifar
@@ -186,6 +187,7 @@ make
 13. Run benchmark
 
 - Firefly RK3399 thread2
+
 ```sh
 firefly@firefly:~/project/darknet2ncnn/benchmark$ ./benchdarknet 10  2 &
 [1] 4556
