@@ -48,7 +48,7 @@ static cv::Mat letter_box_image(const cv::Mat &src, int net_w, int net_h)
     new_w = (src.cols * net_h) / src.rows;
   }
 
-  cv::Mat dest(net_w, net_h, CV_8UC3, cv::Scalar(128, 128, 128));
+  cv::Mat dest(net_h, net_w, CV_8UC3, cv::Scalar(128, 128, 128));
   cv::Mat embed;
   cv::resize(src, embed, cv::Size(new_w, new_h), 0, 0, cv::INTER_LINEAR);
   cv::Mat imageROI = dest(cv::Rect((net_w - new_w) / 2, (net_h - new_h) / 2,
