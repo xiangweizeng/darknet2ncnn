@@ -12,7 +12,7 @@ Darknet2ncnn converts the darknet model to the ncnn model, enabling rapid deploy
 1. Added yolo layer and detection layer implementation, support YOLOV1 and YOLOV3
 1. Provides a converted model verification tool, convert_verify, which supports checking the calculation output of each layer of the network, supports convolutional layer parameter checking, and facilitates rapid positioning of problems in model conversion.
 
-NCNN, meraged darknet layers
+NCNN, merged darknet layers
 https://github.com/xiangweizeng/ncnn
 
 # Technical communication QQ group  
