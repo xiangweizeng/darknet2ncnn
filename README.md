@@ -5,11 +5,15 @@ Darknet2ncnn converts the darknet model to the ncnn model, enabling rapid deploy
 
 [Gitee](https://gitee.com/damone/darknet2ncnn) : https://gitee.com/damone/darknet2ncnn
 
+
 1. Support network layers except local/xor conv, rnn, lstm, gru, crnn and iseg
 1. Added all activation operations not directly supported by ncnn, implemented in the layer DarknetActivation
 1. Added the implementation of the shortcut layer, implemented in the layer DarknetShortCut
 1. Added yolo layer and detection layer implementation, support YOLOV1 and YOLOV3
 1. Provides a converted model verification tool, convert_verify, which supports checking the calculation output of each layer of the network, supports convolutional layer parameter checking, and facilitates rapid positioning of problems in model conversion.
+
+NCNN, meraged darknet layers
+https://github.com/xiangweizeng/ncnn
 
 # Technical communication QQ group  
 点击链接加入群聊【darknet2ncnn】：https://jq.qq.com/?_wv=1027&k=5Gou5zw
