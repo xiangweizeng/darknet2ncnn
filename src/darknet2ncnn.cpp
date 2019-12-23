@@ -703,7 +703,7 @@ void parse_shortcut(network net, int layer_index, layer shortcut, FILE *pp,
   }
 
   // commit, test, some network not work
-  /*if (shortcut.c = shortcut.out_c && shortcut.h == shortcut.out_h &&
+  if (shortcut.c = shortcut.out_c && shortcut.h == shortcut.out_h &&
                    shortcut.w == shortcut.out_w) {
     fprintf(pp, "%-16s shortcut_%d 2 1 %s shortcut_%d 0=1", "Eltwise",
             layer_index, input_data.c_str(), layer_index);
@@ -711,7 +711,7 @@ void parse_shortcut(network net, int layer_index, layer shortcut, FILE *pp,
       fprintf(pp, " -23301=2,%f,%f", shortcut.beta, shortcut.alpha);
     }
     fprintf(pp, "\n");
-  } else*/
+  } else
   {
     fprintf(pp, "%-16s shortcut_%d 2 1 %s shortcut_%d 0=%f 1=%f\n",
             "DarknetShortcut", layer_index, input_data.c_str(), layer_index,

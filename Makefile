@@ -12,7 +12,7 @@ AR=ar
 ARFLAGS=rcs
 OPTS=-Ofast
 LDFLAGS=  -L ncnn/build/install/lib/ -L .  -L darknet  -ldarknet -lncnn -ldarknet2ncnn -lm  -pthread -fopenmp
-COMMON= -I include  -I ncnn/build/install/include/ -I darknet/include/ -I src -I ncnn/src/
+COMMON= -I include  -I ncnn/build/install/include/ncnn/ -I darknet/include/ -I src -I ncnn/src/
 CFLAGS= -Wno-unused-result  -Wfatal-errors -fPIC
 
 ifeq ($(DEBUG), 1) 

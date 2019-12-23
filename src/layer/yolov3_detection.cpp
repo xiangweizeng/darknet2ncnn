@@ -94,7 +94,7 @@ int Yolov3Detection::forward(const std::vector<Mat> &bottom_blobs, std::vector<M
         Mat locations = bottom_blob.channel_range(p, 2);
         sigmoid->forward_inplace(locations, opt);
         Mat boxes_score = bottom_blob.channel_range(p + 4, 1);
-        sigmoid->forward_inplace(boxes_score);
+        sigmoid->forward_inplace(boxes_score, opt);
 
         const float *xptr = locations.channel(0);
         const float *yptr = locations.channel(1);

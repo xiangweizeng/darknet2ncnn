@@ -10,7 +10,7 @@ AR=ar
 ARFLAGS=rcs
 OPTS=-Ofast
 LDFLAGS=  -L .. -L ../ncnn/build/install/lib/  -lncnn -ldarknet2ncnn -lm -pthread -fopenmp 
-COMMON=  -I ../include -I ../ncnn/src/ -I ../ncnn/build/install/include/  
+COMMON=  -I ../include -I ../ncnn/src/ -I ../ncnn/build/install/include/ncnn
 CFLAGS= -Wno-unused-result  -Wfatal-errors -fPIC
 
 ifeq ($(DEBUG), 1) 
