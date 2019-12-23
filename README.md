@@ -5,11 +5,15 @@ Darknet2ncnn converts the darknet model to the ncnn model, enabling rapid deploy
 
 [Gitee](https://gitee.com/damone/darknet2ncnn) : https://gitee.com/damone/darknet2ncnn
 
+
 1. Support network layers except local/xor conv, rnn, lstm, gru, crnn and iseg
 1. Added all activation operations not directly supported by ncnn, implemented in the layer DarknetActivation
 1. Added the implementation of the shortcut layer, implemented in the layer DarknetShortCut
 1. Added yolo layer and detection layer implementation, support YOLOV1 and YOLOV3
 1. Provides a converted model verification tool, convert_verify, which supports checking the calculation output of each layer of the network, supports convolutional layer parameter checking, and facilitates rapid positioning of problems in model conversion.
+
+NCNN, merged darknet layers
+https://github.com/xiangweizeng/ncnn
 
 # Technical communication QQ group  
 点击链接加入群聊【darknet2ncnn】：https://jq.qq.com/?_wv=1027&k=5Gou5zw
@@ -19,22 +23,26 @@ Darknet2ncnn converts the darknet model to the ncnn model, enabling rapid deploy
 1. Install opencv-dev, gcc, g++, make, cmake
 
 2. Download source
+
 ```sh
 git clone https://github.com/xiangweizeng/darknet2ncnn.git
 ```
 3. Init submodule
+
 ```sh
 cd darknet2ncnn
 git submodule init
 git submodule update
 ```
 4. build darknet
+
 ```sh
 cd darknet
 make -j8
 rm libdarknet.so
 ```
 5. build ncnn
+
 ```sh
 # workspace darknet2ncnn
 cd ncnn
@@ -45,13 +53,16 @@ make -j8
 make install
 cd ../../
 ```
+
 6. Build darknet2ncnn , convert_verify and libdarknet2ncnn.a
+
 ```sh
 # workspace darknet2ncnn
 make -j8
 ```
 7. Convert and verify
 - Cifar
+
 ```sh
 # workspace darknet2ncnn
 make cifar
@@ -97,6 +108,7 @@ Layer: 16, Blob : softmax_16, Total Diff 0.000001 Avg Diff: 0.000000
 ```
 
 - Yolov3-tiny
+
 ```sh
  make yolov3-tiny.net 
 ./darknet2ncnn data/yolov3-tiny.cfg  data/yolov3-tiny.weights example/zoo/yolov3-tiny.param  example/zoo/yolov3-tiny.bin 
@@ -135,12 +147,14 @@ conv_22 : biases diff : 0.000000
 Layer: 22, Blob : conv_22_activation, Total Diff 29411.240234 Avg Diff: 0.170619
 ```
 8. Build example
+
 ```sh
 # workspace darknet2ncnn
 cd example
 make -j2
 ```
-10. Run classifier
+
+9. Run classifier
 ```sh
 # workspace example
 make cifar.cifar
@@ -151,9 +165,10 @@ make cifar.cifar
 3    cat                              = 0.180164
 2    bird                             = 0.094251
 ```
-11. Run Yolo
+10. Run Yolo
 
 - Run YoloV3-tiny
+
 ```sh
 # workspace example
  make yolov3-tiny.coco
@@ -177,14 +192,18 @@ DARKNET:
 
 
 12. Build benchmark
+
 ```sh
 # workspace darknet2ncnn
 cd benchmark
 make 
 ```
+
 13. Run benchmark
+
 - Firefly RK3399 thread2
-```
+
+```sh
 firefly@firefly:~/project/darknet2ncnn/benchmark$ ./benchdarknet 10  2 &
 [1] 4556
 loop_count = 10
@@ -214,8 +233,10 @@ resnext152-32x4d  min = 1788.03  max = 1798.79  avg = 1795.48
      yolov3-tiny  min =  240.80  max =  249.98  avg =  245.08
 
 ```
+
 - Firefly RK3399 thread4
-```
+
+```sh
 firefly@firefly:~/project/darknet2ncnn/benchmark$ ./benchdarknet 10  4 &
 [1] 4663 
 loop_count = 10
