@@ -1,6 +1,3 @@
-[submodule "ncnn"]
-	path = ncnn
-	url = https://gitee.com/mirrors/ncnn.git
 [submodule "darknet"]
 	path = darknet
 	url = https://gitee.com/mirrors/Darknet.git
